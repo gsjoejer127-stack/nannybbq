@@ -169,6 +169,8 @@
   .badge.spicy { background: #FFF1D6; color: #9A5B00; }
   .badge.deal { background: var(--ember); color: #fff; }
   .p-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+  /* phones: hide long descriptions so every card lines up */
+  @media (max-width: 520px) { .p-desc { display: none; } .p-body { gap: 5px; } .p-name .en { font-size: 11px; } }
   .rows { display: grid; gap: 6px; margin-top: 2px; }
   .row { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 10px; align-items: center; background: var(--paper); border-radius: 10px; padding: 7px 8px 7px 10px; }
   .row .spec { grid-column: 1; grid-row: 1; font-size: 12.5px; color: var(--ink-soft); min-width: 0; }
@@ -333,9 +335,8 @@
     <div class="wrap">
       <div class="section-head">
         <h2>冷冻烤串<span class="en">Frozen Skewers</span></h2>
-        <span class="count">9 款 · 每包 20 串</span>
       </div>
-      <p class="section-note">全部已腌制好，冷冻保存。烤前解冻，中火烤 8–10 分钟至表面焦香即可。</p>
+      <p class="section-note">冷冻保存，烤前解冻，中火烤至表面焦香即可。</p>
       </div>
       <div class="plist" id="list-skewers"></div>
     </div>
@@ -345,7 +346,6 @@
     <div class="wrap">
       <div class="section-head">
         <h2>丸子 &amp; 鱼饼<span class="en">Balls &amp; Fish Cakes</span></h2>
-        <span class="count">10 款 · 每包 200g</span>
       </div>
       <p class="section-note">烧烤、火锅两用。串起来烤或直接下锅，小孩最爱。</p>
       <div class="plist" id="list-balls"></div>
@@ -356,7 +356,6 @@
     <div class="wrap">
       <div class="section-head">
         <h2>涮肉片<span class="en">Premium Sliced Meats</span></h2>
-        <span class="count">3 款 · 每盒 200g</span>
       </div>
       <p class="section-note">薄切冷冻肉片，火锅涮、烤盘煎都合适。同款 3 盒有优惠价，下单自动折算。</p>
       <div class="plist" id="list-meat"></div>
@@ -367,7 +366,6 @@
     <div class="wrap">
       <div class="section-head">
         <h2>火锅汤底<span class="en">Hotpot Soup Base</span></h2>
-        <span class="count">2 款 · 每包 200g</span>
       </div>
       <p class="section-note">烧烤配一锅汤更圆满。丸子、鱼饼直接下锅，一包够 3–5 人。</p>
       <div class="plist" id="list-soup"></div>
@@ -537,7 +535,13 @@
         rows: [{ spec: "1 包 · 20 块中翅", price: 31.00 }] },
       { id: "sk09", cn: "鱿鱼丁串", en: "Squid Cube Skewer", img: "sk09.jpg", halal: false, tags: [],
         desc: "鱿鱼丁弹牙，刷酱后烤更惹味。",
-        rows: [{ spec: "1 包 · 10 串", price: 44.00 }] }
+        rows: [{ spec: "1 包 · 10 串", price: 44.00 }] },
+      { id: "sk10", cn: "小馒头", en: "Mini Mantou", img: "sk10.jpg", tags: [],
+        desc: "原味小馒头，烤到外皮金黄酥脆，蘸炼奶最香。",
+        rows: [{ spec: "1 包 · 12 粒 · 180g", price: 6.00 }] },
+      { id: "sk11", cn: "棉花糖", en: "Marshmallow", img: "ex02.jpg", tags: ["hot"],
+        desc: "香草味棉花糖，串起来烤到微焦，外脆内软拉丝，小孩最爱。",
+        rows: [{ spec: "1 包 · 65g", price: 6.00 }] }
     ],
     balls: [
       { id: "bl01", cn: "泰式鱼饼", en: "Thai Fish Cake", img: "bl01.jpg", tags: ["hot"], desc: "泰式香料鱼饼，外香里嫩，烤到微焦最好吃。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
@@ -573,11 +577,8 @@
     ],
     season: [
       { id: "se01", cn: "烧烤调味粉", en: "BBQ Seasoning Powder", img: "se01.jpg", tags: [],
-        desc: "麻辣鲜香，独立小包装，烤到一半撒一撒，香气立刻出来。每套 4 小包 × 2g。",
-        rows: [
-          { spec: "原味", sub: "1 套（4 包 × 2g）", price: 2.00 },
-          { spec: "香辣", sub: "1 套（4 包 × 2g）", price: 2.00 }
-        ] },
+        desc: "独立小包装，烤到一半撒一撒，香气立刻出来。",
+        rows: [{ spec: "1 套 · 原味 ×2 + 香辣 ×2", sub: "4 包 × 2g", price: 2.00 }] },
       { id: "se02", cn: "海天烧烤刷酱", en: "Haitian BBQ Sauce", img: "se02.jpg", tags: ["deal"], bundle: { n: 2, price: 10.00, unit: "包" },
         desc: "海天烧烤酱，130g 家用挤压装，边烤边刷，一刷入味。任选 2 包 RM 10，下单自动折算。",
         rows: [
@@ -599,7 +600,7 @@
         desc: "不锈钢汤勺配漏勺，火锅捞料、舀汤一套搞定。",
         rows: [{ spec: "1 套 · 2 支", sub: "不锈钢", price: 5.00 }] },
       { id: "su02", cn: "一次性餐具", en: "Disposable Tableware Set", img: "su02.jpg", tags: [],
-        desc: "加厚型碗、碟、筷组合，冷热两用，一套供 10 人使用。",
+        desc: "加厚型碗、碟、筷组合。",
         rows: [{ spec: "1 套 · 10 人用", price: 6.80 }] },
       { id: "su04", cn: "一次性鸳鸯锡纸锅（带盖）", en: "Disposable Foil Hotpot", img: "su04.jpg", tags: ["hot"],
         desc: "食品级铝箔鸳鸯锅 2.4L，配铝箔盖，卡式炉直接加热，用完即扔免清洗，户外火锅神器。",
@@ -611,10 +612,7 @@
     extras: [
       { id: "ex01", cn: "香茅驱蚊香薰", en: "Citronella Repellent Candle", img: "ex01.jpg", tags: ["deal"], bundle: { n: 5, price: 18.00, unit: "粒" },
         desc: "植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊，孕婴可用。5 粒 RM 18，下单自动折算。",
-        rows: [{ spec: "1 粒 · 80g", price: 4.00 }] },
-      { id: "ex02", cn: "棉花糖", en: "Marshmallow", img: "ex02.jpg", tags: ["hot"],
-        desc: "香草味棉花糖，串起来烤到微焦，外脆内软拉丝，小孩最爱。",
-        rows: [{ spec: "1 包 · 65g", price: 6.00 }] }
+        rows: [{ spec: "1 粒 · 80g", price: 4.00 }] }
     ]
   };
   var ORDER = ["skewers", "balls", "meat", "soup", "grill", "season", "supplies", "extras"];

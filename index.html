@@ -587,7 +587,7 @@
         desc: "便携卡式炉，火锅、煮汤、煎炒都方便，颜色随机出货，不能挑色。图片仅供参考，品牌以实物为准。",
         rows: [
           { spec: "炉 1 个 + 气罐 1 罐", sub: "230g Butane Gas", price: 40.00 },
-          { spec: "炉 1 个 + 气罐 4 罐", sub: "230g Butane Gas · 多 3 罐只加 RM 15，够烤一整晚", price: 55.00 }
+          { spec: "炉 1 个 + 气罐 4 罐", sub: "230g Butane Gas · 多 3 罐只加 RM 10，够烤一整晚", price: 50.00 }
         ] }
     ],
     season: [
@@ -801,14 +801,7 @@
   function buildMessage() {
     var o = orderLines();
     var st = shipStatus();
-    var t = "🔥 BBQ NANNY 订单\n\n";
-    t += "👤 " + val("fName") + " · " + val("fPhone") + "\n";
-    var ship = document.querySelector('input[name="ship"]:checked');
-    t += "🚚 " + (ship ? ship.value : "-") + "\n";
-    if (val("fAddr")) t += "📍 " + val("fAddr") + "\n";
-    if (val("fDate")) t += "📅 烧烤日期 " + val("fDate") + "\n";
-    if (val("fNote")) t += "📝 " + val("fNote") + "\n";
-    t += "\n🛒 订单\n";
+    var t = "🔥 BBQ NANNY 订单\n\n🛒 订单\n";
     var i = 0;
     allProducts().forEach(function (p) {
       var parts = [], packs = 0, amt = 0, unit = 0;
@@ -831,6 +824,13 @@
     });
     t += "\n💰 合计 " + money(o.total) + "\n";
     t += "🚚 运费：" + (st.free ? "免运费 ✓" : "待客服确认") + "\n";
+    t += "\n📦 配送资料\n";
+    t += "👤 " + val("fName") + " · " + val("fPhone") + "\n";
+    var ship = document.querySelector('input[name="ship"]:checked');
+    t += "🚚 " + (ship ? ship.value : "-") + "\n";
+    if (val("fAddr")) t += "📍 " + val("fAddr") + "\n";
+    if (val("fDate")) t += "📅 烧烤日期 " + val("fDate") + "\n";
+    if (val("fNote")) t += "📝 " + val("fNote") + "\n";
     t += "\n麻烦确认付款方式，谢谢 🙏";
     return t;
   }

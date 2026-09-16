@@ -784,19 +784,37 @@
 
   function buildMessage() {
     var o = orderLines();
-    var t = "🔥 BBQ NANNY 订单\n\n";
-    t += "姓名：" + val("fName") + "\n";
-    t += "电话：" + val("fPhone") + "\n";
-    var ship = document.querySelector('input[name="ship"]:checked');
-    t += "配送：" + (ship ? ship.value : "-") + "\n";
-    if (val("fAddr")) t += "地址：" + val("fAddr") + "\n";
-    if (val("fDate")) t += "烧烤日期：" + val("fDate") + "\n";
-    if (val("fNote")) t += "备注：" + val("fNote") + "\n";
-    t += "\n📋 订单明细\n";
-    o.lines.forEach(function (l) { t += "· " + l.name + "（" + l.spec + "）× " + l.n + " = " + money(l.amount) + "\n"; });
     var st = shipStatus();
-    t += "\n货品合计：" + money(o.total) + "\n";
-    t += (st.free ? "运费：免运费 ✓" : "运费：待客服确认") + "\n";
+    var t = "🔥 BBQ NANNY 订单\n\n";
+    t += "👤 " + val("fName") + " · " + val("fPhone") + "\n";
+    var ship = document.querySelector('input[name="ship"]:checked');
+    t += "🚚 " + (ship ? ship.value : "-") + "\n";
+    if (val("fAddr")) t += "📍 " + val("fAddr") + "\n";
+    if (val("fDate")) t += "📅 烧烤日期 " + val("fDate") + "\n";
+    if (val("fNote")) t += "📝 " + val("fNote") + "\n";
+    t += "\n🛒 订单\n";
+    var i = 0;
+    allProducts().forEach(function (p) {
+      var parts = [], packs = 0, amt = 0, unit = 0;
+      p.rows.forEach(function (r, idx) {
+        var n = qty[key(p.id, idx)] || 0;
+        if (n > 0 && r.price !== null) {
+          packs += n; amt += n * r.price; unit = r.price;
+          parts.push((p.rows.length > 1 ? r.spec + " " : "") + "×" + n);
+        }
+      });
+      if (!packs) return;
+      var note = "";
+      if (p.bundle && packs >= p.bundle.n) {
+        var groups = Math.floor(packs / p.bundle.n);
+        var disc = groups * (p.bundle.n * unit - p.bundle.price);
+        if (disc > 0) { amt -= disc; note = "（" + p.bundle.n + p.bundle.unit + "优惠价）"; }
+      }
+      i++;
+      t += i + ". " + p.cn + " " + parts.join("、") + " — " + money(amt) + note + "\n";
+    });
+    t += "\n💰 合计 " + money(o.total) + "\n";
+    t += "🚚 运费：" + (st.free ? "免运费 ✓" : "待客服确认") + "\n";
     t += "\n麻烦确认付款方式，谢谢 🙏";
     return t;
   }

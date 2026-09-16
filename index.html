@@ -200,10 +200,13 @@
   .row .spec .sub { display: block; font-size: 12px; color: var(--ink-soft); line-height: 1.3; margin-top: 1px; }
   .row .price { grid-column: 1; grid-row: 2; font-family: var(--f-latin); font-weight: 800; font-size: 16px; color: var(--ember-deep); white-space: nowrap; line-height: 1.2; margin-top: 2px; }
   .row .stepper { grid-column: 2; grid-row: 1 / span 2; }
-  .row.has-img { grid-template-columns: 56px 1fr auto; }
-  .row.has-img .row-img { grid-column: 1; grid-row: 1 / span 2; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: #fff; border: 1px solid var(--line); }
+  .product.rowimgs .rows-full { grid-column: 1 / -1; margin-top: 4px; }
+  .row.has-img { grid-template-columns: 96px 1fr auto; column-gap: 12px; padding: 0 8px 0 0; background: transparent; }
+  .row.has-img .row-img { grid-column: 1; grid-row: 1 / span 2; width: 96px; height: 96px; border-radius: 12px; background: #fff; overflow: hidden; }
+  .row.has-img .row-img img { width: 100%; height: 100%; object-fit: contain; }
   .row.has-img .spec, .row.has-img .price { grid-column: 2; }
   .row.has-img .stepper { grid-column: 3; }
+  @media (max-width: 380px) { .row.has-img { grid-template-columns: 78px 1fr auto; } .row.has-img .row-img { width: 78px; height: 78px; } }
   .row.tba .price { font-size: 12px; color: var(--ink-faint); font-family: var(--f-body); font-weight: 500; }
   .stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); overflow: hidden; flex: none; }
   .stepper button { width: 34px; height: 34px; border: 0; background: transparent; font-size: 18px; line-height: 1; color: var(--ember-deep); font-weight: 700; }
@@ -715,11 +718,11 @@
       { id: "gr04", cn: "烧烤黑炭", en: "BBQ Charcoal Briquette", img: "gr04.jpg", tags: [],
         desc: "易点燃、火力稳、烟少。",
         rows: [{ spec: "1 包 · 1kg", price: 8.00 }] },
-      { id: "gr02", cn: "便携瓦斯炉套装", en: "Portable Gas Cooker Set", img: "gr02.jpg", imgs: ["gas1.jpg", "gas4.jpg"], tags: ["hot"],
+      { id: "gr02", cn: "便携瓦斯炉套装", en: "Portable Gas Cooker Set", img: "gr02.jpg", tags: ["hot"],
         desc: "便携卡式炉，颜色 / 品牌随机，图片仅供参考。",
         rows: [
-          { spec: "炉 + 气罐 1 罐", sub: "230g Butane Gas", price: 40.00 },
-          { spec: "炉 + 气罐 4 罐", sub: "230g Butane Gas · 多 3 罐只加 RM 10", price: 50.00 }
+          { spec: "炉 + 气罐 1 罐", sub: "230g Butane Gas", price: 40.00, img: "gas1.jpg" },
+          { spec: "炉 + 气罐 4 罐", sub: "230g Butane Gas · 多 3 罐只加 RM 10", price: 50.00, img: "gas4.jpg" }
         ] }
     ],
     season: [
@@ -1075,7 +1078,8 @@
           html += '</div></article>';
           return;
         }
-        html += '<article class="product" id="p-' + p.id + '">';
+        var hasRowImg = p.rows.some(function (r) { return !!r.img; });
+        html += '<article class="product' + (hasRowImg ? " rowimgs" : "") + '" id="p-' + p.id + '">';
         if (p.img && p.imgs) { html += '<div class="thumbs"><div class="thumb"><img src="' + p.img + '" alt="' + esc(p.cn) + '" loading="lazy" width="96" height="96"></div>'; p.imgs.forEach(function (u) { html += '<div class="thumb sm"><img src="' + u + '" alt="" loading="lazy" width="96" height="96"></div>'; }); html += '</div>'; }
         else if (p.img) html += '<div class="thumb"><img src="' + p.img + '" alt="' + esc(p.cn) + '" loading="lazy" width="96" height="96"></div>';
         else html += '<div class="thumb"><div class="glyph">' + p.glyph + '</div></div>';
@@ -1086,7 +1090,8 @@
         (p.tags || []).forEach(function (t) { var lbl = (t === "deal" && p.bundle) ? (lang === "en" ? fmt(EN.deal, { n: p.bundle.n, p: p.bundle.price.toFixed(0) }) : "💰 " + p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(0)) : (lang === "en" ? (EN[t] || TAG_LABEL[t]) : TAG_LABEL[t]); badges += '<span class="badge ' + t + '">' + lbl + '</span>'; });
         if (badges) html += '<div class="badges">' + badges + '</div>';
         html += '<div class="p-desc">' + esc(lang === "en" ? (DESC_EN[p.id] || p.desc) : p.desc) + '</div>';
-        html += '<div class="rows">';
+        if (hasRowImg) html += '</div>';
+        html += '<div class="rows' + (hasRowImg ? " rows-full" : "") + '">';
         p.rows.forEach(function (r, i) {
           var k = key(p.id, i);
           var n = qty[k] || 0;
@@ -1095,7 +1100,7 @@
             return;
           }
           html += '<div class="row' + (r.img ? " has-img" : "") + '" data-key="' + k + '">';
-          if (r.img) html += '<img class="row-img" src="' + r.img + '" alt="" loading="lazy" width="56" height="56">';
+          if (r.img) html += '<div class="row-img"><img src="' + r.img + '" alt="" loading="lazy" width="96" height="96"></div>';
           var rtag = r.tag ? ' <span class="badge ' + r.tag + ' rowtag">' + (lang === "en" ? (EN[r.tag] || TAG_LABEL[r.tag]) : TAG_LABEL[r.tag]) + '</span>' : '';
           html += '<div class="spec"><b>' + esc(tr(r.spec)) + rtag + '</b>' + (r.sub ? '<span class="sub">' + esc(tr(r.sub)) + '</span>' : '') + '</div>';
           html += '<div class="price">' + money(r.price) + '</div>';
@@ -1105,7 +1110,7 @@
           html += '<button type="button" class="inc" aria-label="增加">+</button>';
           html += '</div></div>';
         });
-        html += '</div></div></article>';
+        html += '</div>' + (hasRowImg ? '' : '</div>') + '</article>';
       });
       document.getElementById("list-" + cat).innerHTML = html;
     });

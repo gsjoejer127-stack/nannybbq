@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBQ NANNY 烧烤管家</title>
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:title" content="BBQ NANNY 烧烤管家">
+<meta property="og:description" content="Everything Ready for Your BBQ. 烧烤所需，一站准备。冷冻烤串、丸子、涮肉片、烧烤架、调味刷酱一次订齐，WhatsApp 下单。">
+<meta property="og:image" content="https://bbqnanny.com/img/og.jpg">
+<meta property="og:url" content="https://bbqnanny.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://bbqnanny.com/">
+<meta name="description" content="BBQ NANNY 烧烤管家：冷冻烤串、丸子、涮肉片、火锅汤底、烧烤架、调味刷酱与一次性用品一站订齐，WhatsApp 下单，巴生谷次日送达。">
+<meta name="theme-color" content="#F26A1B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<style>
+  /* Deliberately single-theme (orange + white) — identical for every visitor, no dark mode. */
+  :root {
+    --char: #1F1511;          /* charcoal ink + hero ground */
+    --char-2: #2C1F19;        /* lifted charcoal */
+    --paper: #FFFFFF;         /* white page ground */
+    --surface: #FFFFFF;
+    --surface-2: #FFF3EA;     /* light orange panel */
+    --line: #F4DCCB;
+    --ink: #24170F;
+    --ink-soft: #6E5A4C;
+    --ink-faint: #A69282;
+    --ember: #F26A1B;         /* orange CTA / accent */
+    --ember-deep: #D4520A;
+    --ember-soft: #FFE9DA;
+    --flame: #FFB13B;         /* highlight on dark */
+    --halal: #1E8A4C;
+    --halal-soft: #E1F3E8;
+    --wa: #25D366;
+    --shadow: 0 10px 24px -14px rgba(36, 23, 15, .35);
+
+    --f-latin: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --f-cn-display: "ZCOOL QingKe HuangYou", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --f-body: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-variant-numeric: tabular-nums;
+    padding-bottom: 96px;
+  }
+  a { color: inherit; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--flame); outline-offset: 2px; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 680px; margin: 0 auto; padding-inline: 16px; }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 40;
+    background: #fff; color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 54px; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand-mark { width: 40px; height: auto; flex: none; }
+  .brand-name { font-family: var(--f-latin); font-weight: 800; font-size: 17px; letter-spacing: .02em; line-height: 1; }
+  .brand-name small { display: block; font-family: var(--f-body); font-weight: 500; font-size: 11px; letter-spacing: .18em; color: var(--ember); margin-top: 3px; }
+  .cart-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ember); color: #fff; border: 0; border-radius: 999px;
+    padding: 8px 14px; font-weight: 700; font-size: 14px;
+    opacity: 0; transform: translateY(-4px); transition: opacity .2s, transform .2s; pointer-events: none;
+  }
+  .cart-pill.show { opacity: 1; transform: none; pointer-events: auto; }
+  .cart-pill .n { background: rgba(0,0,0,.25); border-radius: 999px; padding: 1px 8px; font-size: 12px; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    background: linear-gradient(160deg, #FF7A2E 0%, var(--ember) 55%, var(--ember-deep) 100%); color: #fff;
+    padding-block: 26px 40px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: auto -20% -60% -20%; height: 70%;
+    background: radial-gradient(60% 100% at 50% 100%, rgba(255,255,255,.28), rgba(255,255,255,.06) 55%, transparent 75%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero-logo { width: min(230px, 62vw); height: auto; margin: 0 auto 18px; display: block; filter: drop-shadow(0 8px 18px rgba(120,40,0,.35)); }
+  .hero h1, .hero p.lead, .eyebrow { text-align: center; }
+  .hero p.lead { margin-inline: auto; }
+  .hero-ctas { justify-content: center; flex-direction: column; align-items: stretch; max-width: 420px; margin-inline: auto; }
+  .btn-big { font-size: 19px; padding: 17px 24px; border-radius: 14px; box-shadow: 0 10px 26px -8px rgba(80,25,0,.55); letter-spacing: .01em; }
+  .hero .btn-big { background: #fff; color: var(--ember-deep); }
+  .hero .btn-big:hover { background: #FFF3EA; }
+  .hero .btn-ghost { padding: 12px 18px; font-size: 14.5px; }
+  .eyebrow { font-family: var(--f-latin); font-weight: 700; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.85); margin-bottom: 14px; }
+  .hero h1 { margin: 0; font-family: var(--f-latin); font-weight: 800; font-size: clamp(34px, 8vw, 52px); line-height: .98; letter-spacing: -.02em; text-wrap: balance; }
+  .hero h1 .cn { display: block; font-family: var(--f-cn-display); font-weight: 400; font-size: clamp(30px, 7vw, 44px); letter-spacing: .04em; margin-top: 10px; color: #fff; }
+  .hero p.lead { margin: 16px auto 0; font-size: 15px; color: rgba(255,255,255,.92); max-width: 34ch; text-align: center; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; flex-direction: column; align-items: stretch; max-width: 420px; margin-inline: auto; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: 12px; padding: 13px 20px; font-weight: 700; font-size: 15px; text-decoration: none; border: 0;
+    transition: transform .12s, background .15s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn-ember { background: var(--ember); color: #fff; }
+  .btn-ember:hover { background: var(--ember-deep); }
+  .hero .btn-ember { background: #fff; color: var(--ember-deep); }
+  .hero .btn-ember:hover { background: var(--ember-soft); }
+  .btn-ghost { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.55); }
+  .btn-ghost:hover { background: rgba(255,255,255,.24); }
+  .btn-wa { background: var(--wa); color: #0B2A17; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 26px auto 0; max-width: 420px; }
+  .fact { border: 1px solid rgba(255,255,255,.35); border-radius: 12px; padding: 12px 12px 10px; background: rgba(255,255,255,.14); }
+  .fact b { display: block; font-family: var(--f-latin); font-weight: 800; font-size: 20px; line-height: 1; color: #fff; }
+  .fact span { display: block; font-size: 12px; color: rgba(255,255,255,.88); margin-top: 6px; line-height: 1.35; }
+  @media (max-width: 420px) { .hero-facts { grid-template-columns: repeat(3, 1fr); gap: 6px; } .fact { padding: 10px 8px 8px; } .fact b { font-size: 17px; } .fact span { font-size: 11px; } }
+
+
+  /* ---------- category nav ---------- */
+  .catnav { position: sticky; top: 54px; margin-top: 6px; z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); }
+  .catnav .wrap { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+  .catnav .wrap::-webkit-scrollbar { display: none; }
+  .catnav a { flex: none; text-decoration: none; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); white-space: nowrap; }
+  .catnav a.active { background: var(--ember); color: #fff; border-color: var(--ember); }
+
+  /* ---------- sections ---------- */
+  .section { padding-block: 26px 8px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+  .section-head h2 { margin: 0; font-family: var(--f-cn-display); font-weight: 400; font-size: 27px; letter-spacing: .03em; line-height: 1.1; }
+  .section-head h2 .en { display: block; font-family: var(--f-latin); font-weight: 700; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-top: 4px; }
+  .section-head .count { font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
+  .section-note { font-size: 13px; color: var(--ink-soft); margin: 4px 0 14px; }
+
+
+  /* product card */
+  .plist { display: grid; gap: 10px; }
+  .product { display: grid; grid-template-columns: 96px 1fr; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 12px; box-shadow: var(--shadow); }
+  .product.has-qty { border-color: var(--ember); box-shadow: 0 0 0 2px var(--ember-soft), var(--shadow); }
+  .thumb { width: 96px; height: 96px; border-radius: 12px; overflow: hidden; background: var(--surface-2); display: grid; place-items: center; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb .glyph { font-size: 40px; line-height: 1; }
+  .thumb .glyph small { display: block; font-size: 10px; color: var(--ink-faint); text-align: center; margin-top: 6px; letter-spacing: .04em; }
+  .p-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .p-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+  .p-name .cn { font-weight: 700; font-size: 16.5px; line-height: 1.2; }
+  .p-name .en { font-family: var(--f-latin); font-size: 12px; color: var(--ink-faint); font-weight: 500; }
+  .badges { display: flex; flex-wrap: wrap; gap: 5px; }
+  .badge { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; letter-spacing: .02em; }
+  .badge.halal { background: var(--halal-soft); color: var(--halal); }
+  .badge.hot { background: var(--ember-soft); color: var(--ember-deep); }
+  .badge.spicy { background: #FFF1D6; color: #9A5B00; }
+  .badge.deal { background: var(--ember); color: #fff; }
+  .p-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+  .rows { display: grid; gap: 6px; margin-top: 2px; }
+  .row { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto; column-gap: 10px; align-items: center; background: var(--paper); border-radius: 10px; padding: 7px 8px 7px 10px; }
+  .row .spec { grid-column: 1; grid-row: 1; font-size: 12.5px; color: var(--ink-soft); min-width: 0; }
+  .row .spec b { display: block; color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1.3; }
+  .row .spec .sub { display: block; font-size: 12px; color: var(--ink-soft); line-height: 1.3; margin-top: 1px; }
+  .row .price { grid-column: 1; grid-row: 2; font-family: var(--f-latin); font-weight: 800; font-size: 16px; color: var(--ember-deep); white-space: nowrap; line-height: 1.2; margin-top: 2px; }
+  .row .stepper { grid-column: 2; grid-row: 1 / span 2; }
+  .row.tba .price { font-size: 12px; color: var(--ink-faint); font-family: var(--f-body); font-weight: 500; }
+  .stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); overflow: hidden; flex: none; }
+  .stepper button { width: 34px; height: 34px; border: 0; background: transparent; font-size: 18px; line-height: 1; color: var(--ember-deep); font-weight: 700; }
+  .stepper button:hover { background: var(--ember-soft); }
+  .stepper input { width: 34px; height: 34px; border: 0; text-align: center; font: inherit; font-weight: 700; background: transparent; padding: 0; -moz-appearance: textfield; }
+  .stepper input::-webkit-outer-spin-button, .stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .stepper.on { border-color: var(--ember); background: var(--ember-soft); }
+  @media (max-width: 380px) { .product { grid-template-columns: 78px 1fr; } .thumb { width: 78px; height: 78px; } }
+
+  /* ---------- summary panel ---------- */
+  .summary { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-top: 22px; }
+  .summary h3 { margin: 0 0 8px; font-size: 16px; }
+  .sum-lines { display: grid; gap: 6px; font-size: 13.5px; }
+  .sum-line { display: flex; justify-content: space-between; gap: 12px; }
+  .sum-line span:first-child { color: var(--ink-soft); min-width: 0; }
+  .sum-line b { white-space: nowrap; font-family: var(--f-latin); }
+  .sum-line.disc b, .sum-line.disc span:first-child { color: var(--halal); }
+  .sum-empty { color: var(--ink-faint); font-size: 13.5px; }
+  .sum-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--line); margin-top: 12px; padding-top: 12px; }
+  .sum-total .t { font-weight: 700; }
+  .sum-total .v { font-family: var(--f-latin); font-weight: 800; font-size: 26px; color: var(--ember-deep); }
+  .sum-note { font-size: 12px; color: var(--ink-faint); margin-top: 8px; line-height: 1.5; }
+  .ship-hint { margin-top: 12px; background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--ink-soft); }
+  .ship-hint b { color: var(--ember-deep); }
+  .ship-hint.free { background: var(--halal-soft); color: var(--halal); }
+  .ship-hint .bar-track { height: 6px; background: #fff; border-radius: 999px; margin-top: 8px; overflow: hidden; }
+  .ship-hint .bar-fill { height: 100%; background: var(--ember); border-radius: 999px; transition: width .3s; }
+  .ship-hint.free .bar-fill { background: var(--halal); }
+
+  /* ---------- footer ---------- */
+  .footer { padding-block: 26px 10px; color: var(--ink-soft); font-size: 12.5px; }
+  .footer .disclaimer { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; line-height: 1.6; }
+  .footer .sig { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+  .footer .sig b { font-family: var(--f-latin); font-weight: 800; color: var(--ember-deep); }
+  .footer .company { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--ink-faint); line-height: 1.6; }
+  .footer .company b { color: var(--ink-soft); font-weight: 700; letter-spacing: .02em; }
+
+  /* ---------- sticky bottom bar ---------- */
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--ember); color: #fff; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 24px -12px rgba(0,0,0,.5); }
+  .bar .in { max-width: 680px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+  .bar .tot { flex: 1; min-width: 0; line-height: 1.15; }
+  .bar .tot small { display: block; font-size: 11.5px; color: rgba(255,255,255,.85); }
+  .bar .tot b { font-family: var(--f-latin); font-weight: 800; font-size: 22px; }
+  .bar .btn { padding: 12px 22px; background: #fff; color: var(--ember-deep); }
+  .bar .btn:hover { background: var(--ember-soft); }
+  .bar .btn:disabled { background: rgba(255,255,255,.3); color: rgba(255,255,255,.8); cursor: not-allowed; }
+
+  /* ---------- modal ---------- */
+  .overlay { position: fixed; inset: 0; z-index: 60; background: rgba(42,27,16,.5); display: none; align-items: flex-end; justify-content: center; padding: 0; }
+  .overlay.show { display: flex; }
+  .modal { width: 100%; max-width: 560px; max-height: 92vh; overflow: auto; background: var(--paper); border-radius: 22px 22px 0 0; padding: 18px 18px calc(18px + env(safe-area-inset-bottom)); }
+  @media (min-width: 600px) { .overlay { align-items: center; padding: 20px; } .modal { border-radius: 22px; } }
+  .modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .modal-head h3 { margin: 0; font-family: var(--f-cn-display); font-weight: 400; font-size: 24px; letter-spacing: .03em; }
+  .close { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; width: 36px; height: 36px; font-size: 20px; line-height: 1; color: var(--ink-soft); }
+  .m-block { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+  .m-block h4 { margin: 0 0 10px; font-size: 13px; letter-spacing: .06em; color: var(--ink-faint); font-weight: 700; text-transform: uppercase; font-family: var(--f-latin); }
+  .field { display: grid; gap: 5px; margin-bottom: 10px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { font-size: 13px; font-weight: 700; }
+  .field label i { font-style: normal; color: var(--ember); }
+  .field input, .field textarea { font: inherit; font-size: 15px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); width: 100%; }
+  .field textarea { min-height: 70px; resize: vertical; }
+  .field input.err, .field textarea.err { border-color: var(--ember); background: var(--ember-soft); }
+  .choice { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .choice label { position: relative; cursor: pointer; }
+  .choice input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .choice span { display: block; text-align: left; font-size: 13px; font-weight: 500; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink-soft); line-height: 1.3; height: 100%; }
+  .choice span b { display: block; color: var(--ink); font-weight: 700; }
+  .choice span small { display: block; font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+  .choice input:checked + span b { color: var(--ember-deep); }
+  @media (max-width: 480px) { .choice { grid-template-columns: 1fr; } }
+  .choice input:checked + span { background: var(--ember-soft); border-color: var(--ember); }
+  .choice input:focus-visible + span { outline: 3px solid var(--flame); outline-offset: 2px; }
+  .choice.err span { border-color: var(--ember); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 420px) { .grid2 { grid-template-columns: 1fr; } }
+  .m-lines { display: grid; gap: 6px; font-size: 13.5px; }
+  .m-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--line); margin-top: 10px; padding-top: 10px; font-weight: 700; }
+  .m-total .v { font-family: var(--f-latin); font-weight: 800; font-size: 22px; color: var(--ember-deep); }
+  .m-ship { font-size: 12.5px; color: var(--ink-soft); margin-top: 6px; }
+  .m-ship.free { color: var(--halal); font-weight: 700; }
+  .m-hint { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; margin: 0 0 12px; }
+  .m-actions { display: grid; gap: 8px; }
+  .m-actions .btn { width: 100%; padding: 14px; font-size: 16px; }
+  .m-actions .btn-wa:disabled { opacity: .6; cursor: not-allowed; }
+  .m-err { color: var(--ember-deep); font-size: 13px; margin: 0 0 8px; display: none; }
+  .m-err.show { display: block; }
+
+
+  /* ---------- floating WhatsApp ---------- */
+  .wa-float { position: fixed; right: 16px; bottom: calc(86px + env(safe-area-inset-bottom)); z-index: 55; display: flex; align-items: center; gap: 8px; text-decoration: none; animation: wa-pop .5s cubic-bezier(.2,1.4,.4,1) .6s both; }
+  .wa-float .wa-label { background: #fff; color: #0B2A17; font-weight: 700; font-size: 13px; padding: 8px 12px; border-radius: 999px; box-shadow: 0 6px 18px -6px rgba(0,0,0,.35); white-space: nowrap; }
+  .wa-float .wa-btn { position: relative; width: 56px; height: 56px; border-radius: 50%; background: var(--wa); display: grid; place-items: center; box-shadow: 0 10px 24px -8px rgba(11,42,23,.55); }
+  .wa-float .wa-btn svg { width: 30px; height: 30px; fill: #fff; }
+  .wa-float .wa-btn::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--wa); opacity: .5; animation: wa-ring 2s ease-out infinite; z-index: -1; }
+  .wa-float:hover .wa-btn { transform: scale(1.06); }
+  @keyframes wa-pop { from { opacity: 0; transform: translateY(20px) scale(.6); } to { opacity: 1; transform: none; } }
+  @keyframes wa-ring { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.9); opacity: 0; } }
+  @media (max-width: 420px) { .wa-float .wa-label { display: none; } }
+
+  .toast { position: fixed; left: 50%; bottom: 150px; transform: translateX(-50%) translateY(10px); background: var(--ember-deep); color: #fff; padding: 10px 16px; border-radius: 999px; font-size: 13.5px; opacity: 0; transition: opacity .2s, transform .2s; z-index: 70; pointer-events: none; white-space: nowrap; }
+  .toast.show { opacity: 1; transform: translateX(-50%); }
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="BBQ NANNY 烧烤管家">
+      <img class="brand-mark" src="logo_sm.png" alt="" width="40" height="42">
+      <span class="brand-name">BBQ NANNY<small>烧烤管家</small></span>
+    </a>
+    <button class="cart-pill" id="cartPill" type="button" aria-label="查看订单"><span class="n" id="cartCount">0</span><span id="cartTotal">RM 0.00</span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <img class="hero-logo" src="logo.png" alt="BBQ NANNY 烧烤管家" width="640" height="668">
+    <div class="eyebrow">Frozen skewers · Grill · Sauces · Party supplies</div>
+    <h1>Everything Ready for Your BBQ.<span class="cn">烧烤所需，一站准备。</span></h1>
+    <p class="lead">腌好的冷冻烤串、烧烤架、调味粉、刷酱到一次性用品，一次订齐。WhatsApp 下单，客服帮你安排送货。</p>
+    <div class="hero-ctas">
+      <a class="btn btn-ember btn-big" href="#skewers">🔥 马上下单，一站订齐</a>
+      <a class="btn btn-ghost" id="heroWa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>
+        WhatsApp 咨询
+      </a>
+    </div>
+    <div class="hero-facts">
+      <div class="fact"><b>已腌制</b><span>解冻即烤<br>免调味</span></div>
+      <div class="fact"><b>冷冻直送</b><span>巴生谷次日达<br>外坡 2–3 工作日</span></div>
+      <div class="fact"><b>免运费</b><span>巴生谷满 RM 300<br>外坡满 RM 500</span></div>
+    </div>
+  </div>
+</section>
+
+
+<nav class="catnav" aria-label="分类">
+  <div class="wrap">
+    <a href="#skewers" data-cat="skewers" class="active">🍢 冷冻烤串</a>
+    <a href="#balls" data-cat="balls">🍡 丸子 &amp; 鱼饼</a>
+    <a href="#meat" data-cat="meat">🥩 涮肉片</a>
+    <a href="#soup" data-cat="soup">🍲 汤底</a>
+    <a href="#grill" data-cat="grill">🔥 烧烤架 &amp; 炉具</a>
+    <a href="#season" data-cat="season">🧂 调味 &amp; 刷酱</a>
+    <a href="#supplies" data-cat="supplies">🧰 烧烤用品</a>
+    <a href="#extras" data-cat="extras">🌿 驱蚊香薰</a>
+  </div>
+</nav>
+
+<main>
+  <section class="section" id="skewers">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>冷冻烤串<span class="en">Frozen Skewers</span></h2>
+        <span class="count">9 款 · 每包 20 串</span>
+      </div>
+      <p class="section-note">全部已腌制好，冷冻保存。烤前解冻，中火烤 8–10 分钟至表面焦香即可。</p>
+      </div>
+      <div class="plist" id="list-skewers"></div>
+    </div>
+  </section>
+
+  <section class="section" id="balls">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>丸子 &amp; 鱼饼<span class="en">Balls &amp; Fish Cakes</span></h2>
+        <span class="count">10 款 · 每包 200g</span>
+      </div>
+      <p class="section-note">烧烤、火锅两用。串起来烤或直接下锅，小孩最爱。</p>
+      <div class="plist" id="list-balls"></div>
+    </div>
+  </section>
+
+  <section class="section" id="meat">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>涮肉片<span class="en">Premium Sliced Meats</span></h2>
+        <span class="count">3 款 · 每盒 200g</span>
+      </div>
+      <p class="section-note">薄切冷冻肉片，火锅涮、烤盘煎都合适。同款 3 盒有优惠价，下单自动折算。</p>
+      <div class="plist" id="list-meat"></div>
+    </div>
+  </section>
+
+  <section class="section" id="soup">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>火锅汤底<span class="en">Hotpot Soup Base</span></h2>
+        <span class="count">2 款 · 每包 200g</span>
+      </div>
+      <p class="section-note">烧烤配一锅汤更圆满。丸子、鱼饼直接下锅，一包够 3–5 人。</p>
+      <div class="plist" id="list-soup"></div>
+    </div>
+  </section>
+
+  <section class="section" id="grill">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>烧烤架 &amp; 炉具<span class="en">Grill &amp; Cooker</span></h2>
+      </div>
+      <div class="plist" id="list-grill"></div>
+    </div>
+  </section>
+
+  <section class="section" id="season">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>调味 &amp; 刷酱<span class="en">Seasoning &amp; Sauces</span></h2>
+      </div>
+      <p class="section-note">烤串已腌好，调味粉和刷酱是给烤到一半加香、加辣用的。</p>
+      <div class="plist" id="list-season"></div>
+    </div>
+  </section>
+
+  <section class="section" id="supplies">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>烧烤用品<span class="en">Party Supplies</span></h2>
+      </div>
+      <div class="plist" id="list-supplies"></div>
+    </div>
+  </section>
+
+  <section class="section" id="extras">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>驱蚊香薰<span class="en">Extras</span></h2>
+      </div>
+      <div class="plist" id="list-extras"></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="summary" id="summary">
+      <h3>我的订单</h3>
+      <div class="sum-lines" id="sumLines"><div class="sum-empty">还没选东西，从上面按 + 开始。</div></div>
+      <div class="sum-total"><span class="t">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
+      <div class="ship-hint" id="shipHint"></div>
+      <div class="sum-note"><b>配送方式</b><br>巴生谷 Klang Valley：自取 / Lalamove / 冷冻快递（次日送达）· 满 RM 300 免运费<br>外坡 Non-Klang Valley：冷冻快递（2–3 个工作日）· 满 RM 500 免运费<br>未满免运额的运费由客服按地址回复；付款方式：银行转账 / 电子钱包。</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="disclaimer">
+        图片仅供参考。冷冻产品请收货后立即冷冻。<br>
+        Images for reference only. Keep frozen upon receipt.
+      </div>
+      <div class="sig"><b>BBQ NANNY</b><span>烧烤管家 · Everything Ready for Your BBQ.</span></div>
+      <div class="company">
+        <b>ORIENTAL FOOD WHOLESALE SDN. BHD.</b> (1653595-A)<br>
+        57, Jalan 5/116B, Jalan Kuchai Lama, Kuchai Lama, 58200 Kuala Lumpur, W.P. Malaysia
+      </div>
+    </div>
+  </footer>
+</main>
+
+<div class="bar">
+  <div class="in">
+    <div class="tot"><small id="barSub">未选择</small><b id="barTotal">RM 0.00</b></div>
+    <button class="btn btn-ember" id="checkoutBtn" type="button" disabled>去下单</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">确认订单</h3>
+      <button class="close" id="closeModal" type="button" aria-label="关闭">×</button>
+    </div>
+
+    <div class="m-block">
+      <h4>Order</h4>
+      <div class="m-lines" id="mLines"></div>
+      <div class="m-total"><span>货品合计</span><span class="v" id="mTotal">RM 0.00</span></div>
+      <div class="m-ship" id="mShip"></div>
+    </div>
+
+    <div class="m-block">
+      <h4>Delivery</h4>
+      <div class="grid2">
+        <div class="field"><label for="fName">姓名 <i>*</i></label><input id="fName" type="text" autocomplete="name" placeholder="怎么称呼"></div>
+        <div class="field"><label for="fPhone">电话 <i>*</i></label><input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="012-345 6789"></div>
+      </div>
+      <div class="field">
+        <label>配送方式 <i>*</i></label>
+        <div class="choice" id="fShip" role="radiogroup" aria-label="配送方式">
+          <label><input type="radio" name="ship" value="巴生谷 · 自取 Self Pickup"><span><b>自取 Self Pickup</b><small>巴生谷 Klang Valley</small></span></label>
+          <label><input type="radio" name="ship" value="巴生谷 · Lalamove"><span><b>Lalamove</b><small>巴生谷 Klang Valley</small></span></label>
+          <label><input type="radio" name="ship" value="巴生谷 · 冷冻快递（次日送达）"><span><b>冷冻快递 · 次日送达</b><small>巴生谷 Klang Valley</small></span></label>
+          <label><input type="radio" name="ship" value="外坡 · 冷冻快递（2–3 个工作日）"><span><b>冷冻快递 · 2–3 个工作日</b><small>外坡 Non-Klang Valley</small></span></label>
+        </div>
+      </div>
+      <div class="field"><label for="fAddr">送货地址 <i id="addrReq">*</i></label><textarea id="fAddr" autocomplete="street-address" placeholder="门牌、街道、Taman、邮编、城市"></textarea></div>
+      <div class="grid2">
+        <div class="field"><label for="fDate">烧烤日期</label><input id="fDate" type="date"></div>
+        <div class="field"><label for="fNote">备注</label><input id="fNote" type="text" placeholder="例：下午 4 点前送到"></div>
+      </div>
+    </div>
+
+    <p class="m-err" id="mErr">请填好姓名、电话、配送方式和地址。</p>
+    <p class="m-hint">点下面按钮会打开 WhatsApp，订单明细已自动写好，按发送即可。客服会回复运费、送货时间与付款方式。</p>
+    <div class="m-actions">
+      <button class="btn btn-wa" id="sendWa" type="button">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>
+        WhatsApp 发送订单
+      </button>
+      <button class="btn btn-ghost" id="backBtn" type="button" style="color:var(--ink);border-color:var(--line);background:var(--surface)">返回修改</button>
+    </div>
+  </div>
+</div>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp 联系我们">
+  <span class="wa-label">WhatsApp 下单 / 咨询</span>
+  <span class="wa-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg></span>
+</a>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ============ 可改配置 ============ */
+  var WHATSAPP_NUMBER = "60182560668";                      // 接单号码（国际格式，不带 +）
+  var WHATSAPP_HELLO = "Hi BBQ NANNY，我想问一下烧烤套餐 😊";
+  var FREE_KV = 300;   // 巴生谷满额免运
+  var FREE_OUT = 500;  // 外坡满额免运
+
+  /* 价格 = 批发价 × 1.3（2026-09 价目表），全部按整包卖 */
+  var CATALOG = {
+    skewers: [
+      { id: "sk01", cn: "鸡肉串", en: "Chicken Skewer", img: "sk01.jpg", halal: true, tags: ["hot"],
+        desc: "孜然香气，鸡腿肉嫩，大人小孩都爱。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 29.50 }] },
+      { id: "sk02", cn: "羊肉串", en: "Mutton Skewer", img: "sk02.jpg", halal: true, tags: [],
+        desc: "新疆风味，肥瘦相间，炭烤最香。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 40.50 }] },
+      { id: "sk03", cn: "牛肉串", en: "Beef Skewer", img: "sk03.jpg", halal: true, tags: ["hot"],
+        desc: "精选牛肉粒，腌足味，一口一块。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 34.50 }] },
+      { id: "sk04", cn: "麻辣鸡肉串", en: "Mala Chicken Skewer", img: "sk04.jpg", halal: true, tags: ["spicy"],
+        desc: "麻辣腌制，越烤越香，配冰饮绝配。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 32.50 }] },
+      { id: "sk05", cn: "麻辣牛肉串", en: "Mala Beef Skewer", img: "sk05.jpg", halal: true, tags: ["spicy"],
+        desc: "花椒辣椒双重香，肉汁锁住。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 37.80 }] },
+      { id: "sk06", cn: "麻辣羊肉串", en: "Mala Mutton Skewer", img: "sk06.jpg", halal: true, tags: ["spicy"],
+        desc: "麻辣配羊肉，重口味首选。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 44.00 }] },
+      { id: "sk07", cn: "鸡胗串", en: "Chicken Gizzard Skewer", img: "sk07.jpg", halal: false, tags: [],
+        desc: "爽脆有嚼劲，越嚼越香。",
+        rows: [{ spec: "1 包 · 20 串 · 400g", price: 23.50 }] },
+      { id: "sk08", cn: "鸡中翅串", en: "Chicken Wing Skewer", img: "sk08.jpg", halal: false, tags: ["hot"],
+        desc: "蒜香腌制，外焦里嫩，烧烤必点。",
+        rows: [{ spec: "1 包 · 20 块中翅", price: 31.00 }] },
+      { id: "sk09", cn: "鱿鱼丁串", en: "Squid Cube Skewer", img: "sk09.jpg", halal: false, tags: [],
+        desc: "鱿鱼丁弹牙，刷酱后烤更惹味。",
+        rows: [{ spec: "1 包 · 10 串", price: 44.00 }] }
+    ],
+    balls: [
+      { id: "bl01", cn: "泰式鱼饼", en: "Thai Fish Cake", img: "bl01.jpg", tags: ["hot"], desc: "泰式香料鱼饼，外香里嫩，烤到微焦最好吃。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl02", cn: "蔬菜丸子", en: "Mixed Vege Ball", img: "bl02.jpg", tags: [], desc: "混合蔬菜丸，清爽不腻，小孩也爱。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl03", cn: "鱼丸", en: "Fish Ball", img: "bl03.jpg", tags: [], desc: "经典鱼丸，弹牙爽口，烤煮皆宜。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl04", cn: "香菇丸子", en: "Shiitake Ball", img: "bl04.jpg", tags: [], desc: "加入香菇粒，菇香浓郁，口感扎实。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl05", cn: "鱼豆腐", en: "Tofu Fish Cake", img: "bl05.jpg", tags: ["hot"], desc: "外层金黄，内里绵滑，烧烤火锅必备。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl07", cn: "包心鸡肉丸", en: "Chicken Bao Xin Ball", img: "bl07.jpg", tags: [], desc: "咬开有馅，鸡肉多汁，一口一个。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl08", cn: "潮汕牛肉丸子", en: "Beef Ball", img: "bl08.jpg", tags: ["hot"], desc: "潮汕手打风味，弹牙有嚼劲。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl09", cn: "马来乌达鱼片", en: "Otah Fish Cake", img: "bl09.jpg", tags: [], desc: "本地乌达风味，香辣椰香，烤后更香。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl10", cn: "潮州鱼片", en: "Teochew Fish Cake", img: "bl10.jpg", tags: [], desc: "潮州鱼饼切片，鲜甜有弹性。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl11", cn: "鸡肉芝士丸子", en: "Chicken Cheese Ball", img: "bl11.jpg", tags: ["hot"], desc: "咬开芝士爆浆，大人小孩都抢着吃。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] }
+    ],
+    meat: [
+      { id: "mt01", cn: "牛肉片", en: "Beef Slices", img: "mt01.jpg", tags: ["hot", "deal"], bundle: { n: 3, price: 50.00, unit: "盒" }, desc: "Shabu Shabu 薄切牛肉片，雪花分布均匀，涮 10 秒即熟。", rows: [{ spec: "1 盒 · 200g", price: 18.00 }] },
+      { id: "mt02", cn: "羊肉片", en: "Lamb Slices", img: "mt02.jpg", tags: ["deal"], bundle: { n: 3, price: 70.00, unit: "盒" }, desc: "Shabu Shabu 薄切羊肉片，肥瘦相间，火锅烧烤两相宜。", rows: [{ spec: "1 盒 · 200g", price: 25.00 }] },
+      { id: "mt03", cn: "鸡肉片", en: "Chicken Slices", img: "mt03.jpg", tags: ["deal"], bundle: { n: 3, price: 50.00, unit: "盒" }, desc: "Shabu Shabu 薄切鸡肉片，清爽嫩滑，小孩也爱。", rows: [{ spec: "1 盒 · 200g", price: 18.00 }] }
+    ],
+    soup: [
+      { id: "sp01", cn: "花胶鸡汤底", en: "Pes Sup Ayam Emas", img: "sp01.jpg", tags: ["hot"], desc: "鲜香浓郁，胶质满满，滋补养生。加水加鸡肉即成一锅靓汤。", rows: [{ spec: "1 包 · 200g", price: 12.90 }] },
+      { id: "sp02", cn: "麻辣火锅底料", en: "Pes Sup Sichuan Mala Pedas", img: "sp02.jpg", tags: ["spicy"], desc: "正宗川味，花椒飘香，麻辣鲜香，一料多用。", rows: [{ spec: "1 包 · 200g", price: 8.90 }] }
+    ],
+    grill: [
+      { id: "gr01", cn: "烧烤架", en: "BBQ Grill Set", img: "gr01.jpg", tags: [],
+        desc: "折叠式炭烤架 60 × 22.5 × 32 cm，抽拉式换炭，含烤网、炭网、炭盒，一套即可开烤。",
+        rows: [{ spec: "1 套", price: 38.00 }] },
+      { id: "gr02", cn: "便携瓦斯炉套装", en: "Portable Gas Cooker Set", img: "gr02.jpg", tags: ["hot"],
+        desc: "便携卡式炉，火锅、煮汤、煎炒都方便，颜色随机出货，不能挑色。图片仅供参考，品牌以实物为准。",
+        rows: [
+          { spec: "炉 1 个 + 气罐 1 罐", sub: "230g Butane Gas · 颜色随机", price: 40.00 },
+          { spec: "炉 1 个 + 气罐 4 罐", sub: "230g Butane Gas · 颜色随机", price: 55.00 }
+        ] }
+    ],
+    season: [
+      { id: "se01", cn: "烧烤调味粉", en: "BBQ Seasoning Powder", img: "se01.jpg", tags: [],
+        desc: "麻辣鲜香，独立小包装，烤到一半撒一撒，香气立刻出来。每套 4 小包 × 3g。",
+        rows: [
+          { spec: "原味", sub: "1 套（4 包 × 3g）", price: 2.00 },
+          { spec: "香辣", sub: "1 套（4 包 × 3g）", price: 2.00 }
+        ] },
+      { id: "se02", cn: "海天烧烤刷酱", en: "Haitian BBQ Sauce", img: "se02.jpg", tags: ["deal"], bundle: { n: 2, price: 10.00, unit: "包" },
+        desc: "海天烧烤酱，130g 家用挤压装，边烤边刷，一刷入味。任选 2 包 RM 10，下单自动折算。",
+        rows: [
+          { spec: "原味", sub: "1 包 · 130g", price: 6.80 },
+          { spec: "香辣", sub: "1 包 · 130g", price: 6.80 }
+        ] },
+      { id: "se03", cn: "蒜蓉酱", en: "Garlic Sauce", img: "se03.jpg", tags: ["deal"], bundle: { n: 2, price: 15.00, unit: "包" },
+        desc: "半固体蒜蓉酱 132g 挤压装，烤鱿鱼、烤翅、烤菜都合用。任选 2 包 RM 15，下单自动折算。",
+        rows: [
+          { spec: "原味蒜蓉酱", sub: "1 包 · 132g", price: 8.80 },
+          { spec: "香辣蒜蓉酱", sub: "1 包 · 132g", price: 8.80 }
+        ] }
+    ],
+    supplies: [
+      { id: "su03", cn: "锡纸盒", en: "Foil Tray (L)", img: "su03.jpg", tags: [],
+        desc: "L 号 370 × 270 × 70 mm，容量 4900ml，装烤好的串、烤鱼或垫在架上接油。",
+        rows: [{ spec: "2 个", sub: "L size · 370 × 270 × 70 mm", price: 5.00 }] },
+      { id: "su05", cn: "汤勺 + 漏勺", en: "Ladle & Skimmer Set", img: "su05.jpg", tags: [],
+        desc: "不锈钢汤勺配漏勺，火锅捞料、舀汤一套搞定。",
+        rows: [{ spec: "1 套 · 2 支", sub: "不锈钢", price: 5.00 }] },
+      { id: "su02", cn: "一次性餐具", en: "Disposable Tableware Set", img: "su02.jpg", tags: [],
+        desc: "加厚型碗、碟、筷组合，冷热两用，一套供 10 人使用。",
+        rows: [{ spec: "1 套 · 10 人用", price: 6.80 }] },
+      { id: "su04", cn: "一次性鸳鸯锡纸锅（带盖）", en: "Disposable Foil Hotpot", img: "su04.jpg", tags: ["hot"],
+        desc: "食品级铝箔鸳鸯锅 2.4L，配铝箔盖，卡式炉直接加热，用完即扔免清洗，户外火锅神器。",
+        rows: [{ spec: "1 个 · 带盖", sub: "2.4L · 336 × 296 mm", price: 15.00 }] },
+      { id: "su01", cn: "一次性烧烤用品大礼包", en: "BBQ Tools Pack", img: "su01.jpg", tags: ["hot"],
+        desc: "一套搞定：烧烤夹 ×1、炭夹 ×1、油刷 ×2、不锈钢铁签 1 扎、竹签 1 包、调味罐 ×2。用完即丢不用洗。",
+        rows: [{ spec: "1 套", price: 30.00 }] }
+    ],
+    extras: [
+      { id: "ex01", cn: "香茅驱蚊香薰", en: "Citronella Repellent Candle", img: "ex01.jpg", tags: ["deal"], bundle: { n: 5, price: 18.00, unit: "粒" },
+        desc: "植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊，孕婴可用。5 粒 RM 18，下单自动折算。",
+        rows: [{ spec: "1 粒 · 80g", price: 4.00 }] }
+    ]
+  };
+  var ORDER = ["skewers", "balls", "meat", "soup", "grill", "season", "supplies", "extras"];
+  var TAG_LABEL = { hot: "🔥 人气", spicy: "🌶 麻辣", deal: "💰 2 包 RM 10" };
+
+  var qty = {};
+  var STORE_KEY = "bbqnanny_cart_v1";
+  try { qty = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { qty = {}; }
+  function persist() { try { localStorage.setItem(STORE_KEY, JSON.stringify(qty)); } catch (e) {} }
+
+  function money(n) { return (n < 0 ? "−RM " : "RM ") + Math.abs(n).toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function key(pid, i) { return pid + ":" + i; }
+
+  function allProducts() { var out = []; ORDER.forEach(function (c) { CATALOG[c].forEach(function (p) { out.push(p); }); }); return out; }
+
+  function render() {
+    ORDER.forEach(function (cat) {
+      var html = "";
+      CATALOG[cat].forEach(function (p) {
+        html += '<article class="product" id="p-' + p.id + '">';
+        if (p.img) html += '<div class="thumb"><img src="' + p.img + '" alt="' + esc(p.cn) + '" loading="lazy" width="96" height="96"></div>';
+        else html += '<div class="thumb"><div class="glyph">' + p.glyph + '</div></div>';
+        html += '<div class="p-body">';
+        html += '<div class="p-name"><span class="cn">' + esc(p.cn) + '</span><span class="en">' + esc(p.en) + '</span></div>';
+        var badges = "";
+        (p.tags || []).forEach(function (t) { badges += '<span class="badge ' + t + '">' + (t === "deal" && p.bundle ? "💰 " + p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(0) : TAG_LABEL[t]) + '</span>'; });
+        if (badges) html += '<div class="badges">' + badges + '</div>';
+        html += '<div class="p-desc">' + esc(p.desc) + '</div>';
+        html += '<div class="rows">';
+        p.rows.forEach(function (r, i) {
+          var k = key(p.id, i);
+          var n = qty[k] || 0;
+          if (r.price === null) {
+            html += '<div class="row tba"><div class="spec"><b>' + esc(r.spec) + '</b></div><div class="price">价格请 WhatsApp 询问</div></div>';
+            return;
+          }
+          html += '<div class="row" data-key="' + k + '">';
+          html += '<div class="spec"><b>' + esc(r.spec) + '</b>' + (r.sub ? '<span class="sub">' + esc(r.sub) + '</span>' : '') + '</div>';
+          html += '<div class="price">' + money(r.price) + '</div>';
+          html += '<div class="stepper' + (n > 0 ? " on" : "") + '">';
+          html += '<button type="button" class="dec" aria-label="减少">−</button>';
+          html += '<input type="number" class="q" min="0" max="999" inputmode="numeric" value="' + n + '" aria-label="' + esc(p.cn + " " + r.spec) + ' 数量">';
+          html += '<button type="button" class="inc" aria-label="增加">+</button>';
+          html += '</div></div>';
+        });
+        html += '</div></div></article>';
+      });
+      document.getElementById("list-" + cat).innerHTML = html;
+    });
+    recalc();
+  }
+
+  function setQty(k, n) {
+    n = Math.max(0, Math.min(999, n | 0));
+    if (n === 0) delete qty[k]; else qty[k] = n;
+    var row = document.querySelector('.row[data-key="' + k + '"]');
+    if (row) {
+      row.querySelector(".q").value = n;
+      row.querySelector(".stepper").classList.toggle("on", n > 0);
+    }
+    persist();
+    recalc();
+  }
+
+  function orderLines() {
+    var lines = [], total = 0, count = 0;
+    allProducts().forEach(function (p) {
+      var packs = 0, unit = 0;
+      p.rows.forEach(function (r, i) {
+        var n = qty[key(p.id, i)] || 0;
+        if (n > 0 && r.price !== null) {
+          var amt = n * r.price;
+          total += amt; count += n; packs += n; unit = r.price;
+          lines.push({ name: p.cn, spec: r.spec + (r.sub ? " " + r.sub : ""), n: n, amount: amt });
+        }
+      });
+      if (p.bundle && packs >= p.bundle.n) {
+        var groups = Math.floor(packs / p.bundle.n);
+        var disc = groups * (p.bundle.n * unit - p.bundle.price);
+        if (disc > 0) { total -= disc; lines.push({ name: p.cn, spec: p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(2) + " 优惠", n: groups, amount: -disc, disc: true }); }
+      }
+    });
+    return { lines: lines, total: total, count: count };
+  }
+
+  function recalc() {
+    var o = orderLines();
+    document.querySelectorAll(".product").forEach(function (el) {
+      var has = false;
+      el.querySelectorAll(".row[data-key]").forEach(function (r) { if (qty[r.getAttribute("data-key")] > 0) has = true; });
+      el.classList.toggle("has-qty", has);
+    });
+    document.getElementById("barTotal").textContent = money(o.total);
+    var barSub = "未选择";
+    if (o.count > 0) {
+      if (o.total >= FREE_OUT) barSub = "已选 " + o.count + " 件 · ✓ 全马免运费";
+      else if (o.total >= FREE_KV) barSub = "已选 " + o.count + " 件 · ✓ 巴生谷免运费";
+      else barSub = "已选 " + o.count + " 件 · 再买 " + money(FREE_KV - o.total) + " 巴生谷免运";
+    }
+    document.getElementById("barSub").textContent = barSub;
+    var sh = document.getElementById("shipHint");
+    if (o.count === 0) { sh.innerHTML = "巴生谷满 <b>RM 300</b> 免运费 · 外坡满 <b>RM 500</b> 免运费"; sh.classList.remove("free"); }
+    else if (o.total >= FREE_OUT) { sh.innerHTML = "✓ 已达 RM 500，全马免运费"; sh.classList.add("free"); }
+    else if (o.total >= FREE_KV) { sh.innerHTML = "✓ 已达 RM 300，巴生谷免运费 · 外坡再买 <b>" + money(FREE_OUT - o.total) + "</b> 也免运"; sh.classList.remove("free"); sh.classList.add("free"); }
+    else { sh.innerHTML = "再买 <b>" + money(FREE_KV - o.total) + "</b> 巴生谷免运费（外坡满 RM 500）<div class=\"bar-track\"><div class=\"bar-fill\" style=\"width:" + Math.min(100, o.total / FREE_KV * 100) + "%\"></div></div>"; sh.classList.remove("free"); }
+    document.getElementById("checkoutBtn").disabled = o.count === 0;
+    document.getElementById("cartPill").classList.toggle("show", o.count > 0);
+    document.getElementById("cartCount").textContent = o.count;
+    document.getElementById("cartTotal").textContent = money(o.total);
+    document.getElementById("sumTotal").textContent = money(o.total);
+    var sl = document.getElementById("sumLines");
+    if (!o.lines.length) { sl.innerHTML = '<div class="sum-empty">还没选东西，从上面按 + 开始。</div>'; return; }
+    sl.innerHTML = o.lines.map(function (l) {
+      return '<div class="sum-line' + (l.disc ? ' disc' : '') + '"><span>' + esc(l.name + " · " + l.spec) + ' × ' + l.n + '</span><b>' + money(l.amount) + '</b></div>';
+    }).join("");
+  }
+
+  /* ---- modal ---- */
+  var overlay = document.getElementById("overlay");
+  function openModal() {
+    var o = orderLines();
+    if (!o.count) return;
+    document.getElementById("mLines").innerHTML = o.lines.map(function (l) {
+      return '<div class="sum-line' + (l.disc ? ' disc' : '') + '"><span>' + esc(l.name + " · " + l.spec) + ' × ' + l.n + '</span><b>' + money(l.amount) + '</b></div>';
+    }).join("");
+    document.getElementById("mTotal").textContent = money(o.total);
+    updateModalShip();
+    overlay.classList.add("show");
+    document.body.style.overflow = "hidden";
+    setTimeout(function () { document.getElementById("fName").focus(); }, 50);
+  }
+  function closeModal() { overlay.classList.remove("show"); document.body.style.overflow = ""; }
+
+  function shipStatus() {
+    var o = orderLines();
+    var r = document.querySelector('input[name="ship"]:checked');
+    var v = r ? r.value : "";
+    if (v.indexOf("自取") >= 0) return { free: true, text: "自取，无运费" };
+    var out = v.indexOf("外坡") >= 0;
+    var th = out ? FREE_OUT : FREE_KV;
+    if (!v) return { free: false, text: "运费：请先选配送方式（巴生谷满 RM 300 / 外坡满 RM 500 免运）" };
+    if (o.total >= th) return { free: true, text: "✓ 满 RM " + th + "，免运费" };
+    return { free: false, text: "运费：再买 " + money(th - o.total) + " 即免运费，否则由客服按地址回复" };
+  }
+  function updateModalShip() {
+    var st = shipStatus(); var el = document.getElementById("mShip");
+    el.textContent = st.text; el.classList.toggle("free", st.free);
+  }
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function validate() {
+    var ok = true;
+    var shipSel = document.querySelector('input[name="ship"]:checked');
+    var pickup = !!(shipSel && shipSel.value.indexOf("自取") >= 0);
+    [["fName", 1], ["fPhone", 7], ["fAddr", pickup ? 0 : 6]].forEach(function (f) {
+      var el = document.getElementById(f[0]);
+      var bad = el.value.trim().length < f[1];
+      el.classList.toggle("err", bad);
+      if (bad) ok = false;
+    });
+    var shipOk = !!document.querySelector('input[name="ship"]:checked');
+    document.getElementById("fShip").classList.toggle("err", !shipOk);
+    if (!shipOk) ok = false;
+    document.getElementById("mErr").classList.toggle("show", !ok);
+    return ok;
+  }
+
+  function buildMessage() {
+    var o = orderLines();
+    var t = "🔥 BBQ NANNY 订单\n\n";
+    t += "姓名：" + val("fName") + "\n";
+    t += "电话：" + val("fPhone") + "\n";
+    var ship = document.querySelector('input[name="ship"]:checked');
+    t += "配送：" + (ship ? ship.value : "-") + "\n";
+    if (val("fAddr")) t += "地址：" + val("fAddr") + "\n";
+    if (val("fDate")) t += "烧烤日期：" + val("fDate") + "\n";
+    if (val("fNote")) t += "备注：" + val("fNote") + "\n";
+    t += "\n📋 订单明细\n";
+    o.lines.forEach(function (l) { t += "· " + l.name + "（" + l.spec + "）× " + l.n + " = " + money(l.amount) + "\n"; });
+    var st = shipStatus();
+    t += "\n货品合计：" + money(o.total) + "\n";
+    t += (st.free ? "运费：免运费 ✓" : "运费：待客服确认") + "\n";
+    t += "\n麻烦确认付款方式，谢谢 🙏";
+    return t;
+  }
+
+  function init() {
+    render();
+
+    document.querySelectorAll(".plist").forEach(function (list) {
+      list.addEventListener("click", function (e) {
+        var btn = e.target.closest("button");
+        if (!btn) return;
+        var row = btn.closest(".row[data-key]");
+        if (!row) return;
+        var k = row.getAttribute("data-key");
+        var n = qty[k] || 0;
+        setQty(k, btn.classList.contains("inc") ? n + 1 : n - 1);
+      });
+      list.addEventListener("change", function (e) {
+        var inp = e.target.closest(".q");
+        if (!inp) return;
+        setQty(inp.closest(".row").getAttribute("data-key"), parseInt(inp.value, 10) || 0);
+      });
+    });
+
+    var hello = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_HELLO);
+    document.getElementById("heroWa").href = hello;
+    document.getElementById("waFloat").href = hello;
+
+    document.getElementById("checkoutBtn").addEventListener("click", openModal);
+    document.getElementById("cartPill").addEventListener("click", openModal);
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    document.getElementById("backBtn").addEventListener("click", closeModal);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && overlay.classList.contains("show")) closeModal(); });
+
+    ["fName", "fPhone", "fAddr", "fDate", "fNote"].forEach(function (id) {
+      var el = document.getElementById(id);
+      try { el.value = localStorage.getItem("bbqnanny_" + id) || ""; } catch (e) {}
+      el.addEventListener("input", function () { try { localStorage.setItem("bbqnanny_" + id, el.value); } catch (e) {} });
+    });
+
+    try { var savedShip = localStorage.getItem("bbqnanny_ship"); if (savedShip) { var r = document.querySelector('input[name="ship"][value="' + savedShip + '"]'); if (r) r.checked = true; } } catch (e) {}
+    function syncAddrReq() { var r = document.querySelector('input[name="ship"]:checked'); document.getElementById("addrReq").style.display = (r && r.value.indexOf("自取") >= 0) ? "none" : ""; }
+    document.getElementById("fShip").addEventListener("change", function (e) { try { localStorage.setItem("bbqnanny_ship", e.target.value); } catch (err) {} syncAddrReq(); updateModalShip(); });
+    syncAddrReq();
+
+    document.getElementById("sendWa").addEventListener("click", function () {
+      if (!validate()) return;
+      var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildMessage());
+      var a = document.createElement("a");
+      a.href = url; a.target = "_blank"; a.rel = "noopener";
+      document.body.appendChild(a); a.click(); a.remove();
+      toast("已打开 WhatsApp，按发送即可 ✓");
+    });
+
+    /* category nav highlight */
+    var links = document.querySelectorAll(".catnav a");
+    var secs = ORDER.map(function (c) { return document.getElementById(c); });
+    function hl() {
+      var y = window.scrollY + 130, cur = ORDER[0];
+      secs.forEach(function (s, i) { if (s.offsetTop <= y) cur = ORDER[i]; });
+      links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("data-cat") === cur); });
+    }
+    window.addEventListener("scroll", hl, { passive: true });
+    hl();
+  }
+
+  function toast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(toast._h); toast._h = setTimeout(function () { t.classList.remove("show"); }, 2600);
+  }
+
+  init();
+})();
+</script>
+
+</body>
+</html>

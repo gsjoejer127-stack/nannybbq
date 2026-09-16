@@ -255,8 +255,9 @@
   .sum-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--line); margin-top: 12px; padding-top: 12px; }
   .sum-total .t { font-weight: 700; }
   .sum-total .v { font-family: var(--f-latin); font-weight: 800; font-size: 26px; color: var(--ember-deep); }
-  .sum-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; display: grid; gap: 4px; padding-left: 2px; }
-  .sum-note p { margin: 0; }
+  .sum-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; display: flex; flex-wrap: wrap; gap: 2px 0; padding-left: 2px; }
+  .sum-note p { margin: 0; white-space: nowrap; }
+  .sum-note p + p::before { content: "·"; margin: 0 8px; color: var(--ink-faint); }
   .ship-hint { margin-top: 12px; background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--ink-soft); }
   .ship-hint b { color: var(--ember-deep); }
   .ship-hint.free { background: var(--halal-soft); color: var(--halal); }
@@ -516,9 +517,9 @@
       <div class="sum-total"><span class="t" data-i18n="subtotal">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
       <div class="ship-hint" id="shipHint"></div>
       <div class="sum-note">
-        <p data-i18n="sn1">🚚 Klang Valley 同城配送 · 满 RM 300 免运</p>
-        <p data-i18n="sn2">📦 外坡冷冻快递 · 满 RM 500 免运</p>
-        <p data-i18n="sn3">💳 转账 / 电子钱包 · 运费客服确认</p>
+        <p data-i18n="sn1">🚚 Klang Valley 满 RM 300 免运</p>
+        <p data-i18n="sn2">📦 外坡满 RM 500 免运</p>
+        <p data-i18n="sn3">💳 转账 / 电子钱包</p>
       </div>
     </div>
   </section>
@@ -930,9 +931,9 @@
     note_soup: "Pair your BBQ with a pot of soup. Drop in balls and fish cakes — one pack serves 3–5.",
     note_season: "Skewers are already marinated; use the powder and sauces for extra aroma and heat mid-grill.",
     my_order: "My Order", subtotal: "Subtotal", subtotal2: "Subtotal",
-    sn1: "🚚 Klang Valley delivery · Free above RM 300",
-    sn2: "📦 Outstation frozen courier · Free above RM 500",
-    sn3: "💳 Bank transfer / e-wallet · Delivery fee confirmed by us",
+    sn1: "🚚 Klang Valley free above RM 300",
+    sn2: "📦 Outstation free above RM 500",
+    sn3: "💳 Bank transfer / e-wallet",
     checkout: "Checkout", confirm: "Confirm Order",
     l_name: "Name <i>*</i>", l_phone: "Phone <i>*</i>", l_ship: "Delivery <i>*</i>", l_addr: "Delivery address <i id=\"addrReq\">*</i>", l_date: "BBQ date", l_note: "Note",
     ph_name: "Your name", ph_addr: "House no., street, Taman, postcode, city", ph_note: "e.g. deliver before 4pm",

@@ -151,8 +151,12 @@
 
   /* ---------- category nav ---------- */
   .catnav { position: sticky; top: 54px; margin-top: 6px; z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); }
-  .catnav .wrap { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+  .catnav { position: relative; }
+  .catnav .wrap { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
   .catnav .wrap::-webkit-scrollbar { display: none; }
+  .catnav::after { content: ""; position: absolute; top: 0; right: 0; bottom: 1px; width: 36px; background: linear-gradient(90deg, rgba(255,255,255,0), var(--paper) 70%); pointer-events: none; }
+  .catnav.at-end::after { opacity: 0; }
+  @media (min-width: 600px) { .catnav .wrap { flex-wrap: wrap; overflow: visible; row-gap: 8px; } .catnav::after { display: none; } }
   .catnav a { flex: none; text-decoration: none; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); white-space: nowrap; }
   .catnav a.active { background: var(--ember); color: #fff; border-color: var(--ember); }
 
@@ -1347,12 +1351,22 @@
     /* category nav highlight */
     var links = document.querySelectorAll(".catnav a");
     var secs = ORDER.map(function (c) { return document.getElementById(c); });
+    var navWrap = document.querySelector(".catnav .wrap"), navEl = document.querySelector(".catnav"), lastCur = null;
+    function navEnd() { navEl.classList.toggle("at-end", navWrap.scrollLeft + navWrap.clientWidth >= navWrap.scrollWidth - 4); }
+    navWrap.addEventListener("scroll", navEnd, { passive: true });
     function hl() {
       var y = window.scrollY + 130, cur = ORDER[0];
       secs.forEach(function (s, i) { if (s.offsetTop <= y) cur = ORDER[i]; });
       links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("data-cat") === cur); });
+      if (cur !== lastCur) {
+        lastCur = cur;
+        var act = document.querySelector('.catnav a[data-cat="' + cur + '"]');
+        if (act && navWrap.scrollWidth > navWrap.clientWidth) navWrap.scrollTo({ left: act.offsetLeft - navWrap.clientWidth / 2 + act.offsetWidth / 2, behavior: "smooth" });
+      }
+      navEnd();
     }
     window.addEventListener("scroll", hl, { passive: true });
+    window.addEventListener("resize", navEnd);
     hl();
   }
 

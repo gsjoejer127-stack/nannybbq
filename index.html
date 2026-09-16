@@ -14,12 +14,12 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta property="og:title" content="BBQ NANNY 烧烤管家">
 <meta property="og:description" content="Everything Ready for Your BBQ. 烧烤所需，一站准备。冷冻烤串、丸子、涮肉片、烧烤架、调味刷酱一次订齐，WhatsApp 下单。">
-<meta property="og:image" content="https://bbqnanny.com/img/og.jpg">
+<meta property="og:image" content="https://bbqnanny.com/og.jpg">
 <meta property="og:url" content="https://bbqnanny.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://bbqnanny.com/">
-<meta name="description" content="BBQ NANNY 烧烤管家：冷冻烤串、丸子、涮肉片、火锅汤底、烧烤架、调味刷酱与一次性用品一站订齐，WhatsApp 下单，巴生谷次日送达。">
+<meta name="description" content="BBQ NANNY 烧烤管家：冷冻烤串、丸子、涮肉片、火锅汤底、烧烤架、调味刷酱与一次性用品一站订齐，WhatsApp 下单，巴生谷次日送达。BBQ supplies delivery Malaysia.">
 <meta name="theme-color" content="#F26A1B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;500;700&display=swap">
@@ -81,11 +81,16 @@
     background: #fff; color: var(--ink);
     border-bottom: 1px solid var(--line);
   }
-  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 54px; gap: 12px; }
+  .topbar .wrap { display: flex; align-items: center; height: 54px; gap: 10px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .brand-mark { width: 40px; height: auto; flex: none; }
   .brand-name { font-family: var(--f-latin); font-weight: 800; font-size: 17px; letter-spacing: .02em; line-height: 1; }
   .brand-name small { display: block; font-family: var(--f-body); font-weight: 500; font-size: 11px; letter-spacing: .18em; color: var(--ember); margin-top: 3px; }
+  .lang-btn { margin-left: auto; margin-right: 8px; border: 1.5px solid var(--ember); background: #fff; color: var(--ember-deep); font-weight: 800; font-family: var(--f-latin); font-size: 12px; letter-spacing: .06em; padding: 6px 10px; border-radius: 999px; flex: none; }
+  html[lang="en"] .only-cn { display: none; }
+  html[lang="en"] .fact b { font-size: 17px; }
+  html[lang="en"] .btn-big { font-size: 17px; }
+  html:not([lang="en"]) .only-en { display: none; }
   .cart-pill {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--ember); color: #fff; border: 0; border-radius: 999px;
@@ -316,6 +321,7 @@
       <img class="brand-mark" src="logo_sm.png" alt="" width="40" height="42">
       <span class="brand-name">BBQ NANNY<small>烧烤管家</small></span>
     </a>
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
     <button class="cart-pill" id="cartPill" type="button" aria-label="查看订单"><span class="n" id="cartCount">0</span><span id="cartTotal">RM 0.00</span></button>
   </div>
 </header>
@@ -325,18 +331,18 @@
     <img class="hero-logo" src="logo.png" alt="BBQ NANNY 烧烤管家" width="640" height="668">
     <div class="eyebrow">Frozen skewers · Grill · Sauces · Party supplies</div>
     <h1>Everything Ready for Your BBQ.<span class="cn">烧烤所需，一站准备。</span></h1>
-    <p class="lead">腌好的冷冻烤串、烧烤架、调味粉、刷酱到一次性用品，一次订齐。WhatsApp 下单，客服帮你安排送货。</p>
+    <p class="lead" data-i18n="lead">腌好的冷冻烤串、烧烤架、调味粉、刷酱到一次性用品，一次订齐。WhatsApp 下单，客服帮你安排送货。</p>
     <div class="hero-ctas">
-      <a class="btn btn-ember btn-big" href="#skewers">🔥 马上下单，一站订齐</a>
+      <a class="btn btn-ember btn-big" href="#skewers" data-i18n="cta">🔥 马上下单，一站订齐</a>
       <a class="btn btn-ghost" id="heroWa" href="#" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>
-        WhatsApp 咨询
+        <span data-i18n="cta_wa">WhatsApp 咨询</span>
       </a>
     </div>
     <div class="hero-facts">
-      <div class="fact"><b>已腌制</b><span>解冻即烤<br>免调味</span></div>
-      <div class="fact"><b>冷冻直送</b><span>巴生谷次日达<br>外坡 2–3 工作日</span></div>
-      <div class="fact"><b>免运费</b><span>巴生谷满 RM 300<br>外坡满 RM 500</span></div>
+      <div class="fact" data-i18n="fact1"><b>已腌制</b><span>解冻即烤<br>免调味</span></div>
+      <div class="fact" data-i18n="fact2"><b>冷冻直送</b><span>巴生谷次日达<br>外坡 2–3 工作日</span></div>
+      <div class="fact" data-i18n="fact3"><b>免运费</b><span>巴生谷满 RM 300<br>外坡满 RM 500</span></div>
     </div>
   </div>
 </section>
@@ -344,14 +350,14 @@
 
 <nav class="catnav" aria-label="分类">
   <div class="wrap">
-    <a href="#skewers" data-cat="skewers" class="active">🍢 冷冻烤串</a>
-    <a href="#balls" data-cat="balls">🍡 丸子 &amp; 鱼饼</a>
-    <a href="#meat" data-cat="meat">🥩 涮肉片 / 烤肉片</a>
-    <a href="#soup" data-cat="soup">🍲 汤底</a>
-    <a href="#grill" data-cat="grill">🔥 烧烤架 &amp; 炉具</a>
-    <a href="#season" data-cat="season">🧂 调味 &amp; 刷酱</a>
-    <a href="#supplies" data-cat="supplies">🧰 烧烤用品</a>
-    <a href="#extras" data-cat="extras">🌿 其他好物</a>
+    <a href="#skewers" data-cat="skewers" data-i18n="nav_skewers" class="active">🍢 冷冻烤串</a>
+    <a href="#balls" data-cat="balls" data-i18n="nav_balls">🍡 丸子 &amp; 鱼饼</a>
+    <a href="#meat" data-cat="meat" data-i18n="nav_meat">🥩 涮肉片 / 烤肉片</a>
+    <a href="#soup" data-cat="soup" data-i18n="nav_soup">🍲 汤底</a>
+    <a href="#grill" data-cat="grill" data-i18n="nav_grill">🔥 烧烤架 &amp; 炉具</a>
+    <a href="#season" data-cat="season" data-i18n="nav_season">🧂 调味 &amp; 刷酱</a>
+    <a href="#supplies" data-cat="supplies" data-i18n="nav_supplies">🧰 烧烤用品</a>
+    <a href="#extras" data-cat="extras" data-i18n="nav_extras">🌿 其他好物</a>
   </div>
 </nav>
 
@@ -360,9 +366,9 @@
   <section class="section" id="skewers">
     <div class="wrap">
       <div class="section-head">
-        <h2>冷冻烤串<span class="en">Frozen Skewers</span></h2>
+        <h2 data-i18n="h_skewers">冷冻烤串<span class="en">Frozen Skewers</span></h2>
       </div>
-      <p class="section-note">冷冻保存，烤前解冻，中火烤至表面焦香即可。</p>
+      <p class="section-note" data-i18n="note_skewers">冷冻保存，烤前解冻，中火烤至表面焦香即可。</p>
       </div>
       <div class="plist" id="list-skewers"></div>
     </div>
@@ -371,9 +377,9 @@
   <section class="section" id="balls">
     <div class="wrap">
       <div class="section-head">
-        <h2>丸子 &amp; 鱼饼<span class="en">Balls &amp; Fish Cakes</span></h2>
+        <h2 data-i18n="h_balls">丸子 &amp; 鱼饼<span class="en">Balls &amp; Fish Cakes</span></h2>
       </div>
-      <p class="section-note">烧烤、火锅两用。串起来烤或直接下锅，小孩最爱。</p>
+      <p class="section-note" data-i18n="note_balls">烧烤、火锅两用。串起来烤或直接下锅，小孩最爱。</p>
       <div class="plist" id="list-balls"></div>
     </div>
   </section>
@@ -381,9 +387,9 @@
   <section class="section" id="meat">
     <div class="wrap">
       <div class="section-head">
-        <h2>涮肉片 / 烤肉片<span class="en">Premium Sliced Meats</span></h2>
+        <h2 data-i18n="h_meat">涮肉片 / 烤肉片<span class="en">Premium Sliced Meats</span></h2>
       </div>
-      <p class="section-note">薄切冷冻肉片，火锅涮、烤盘煎都合适。同款 3 盒有优惠价，下单自动折算。</p>
+      <p class="section-note" data-i18n="note_meat">薄切冷冻肉片，火锅涮、烤盘煎都合适。同款 3 盒有优惠价，下单自动折算。</p>
       <div class="plist" id="list-meat"></div>
     </div>
   </section>
@@ -391,9 +397,9 @@
   <section class="section" id="soup">
     <div class="wrap">
       <div class="section-head">
-        <h2>火锅汤底<span class="en">Hotpot Soup Base</span></h2>
+        <h2 data-i18n="h_soup">火锅汤底<span class="en">Hotpot Soup Base</span></h2>
       </div>
-      <p class="section-note">烧烤配一锅汤更圆满。丸子、鱼饼直接下锅，一包够 3–5 人。</p>
+      <p class="section-note" data-i18n="note_soup">烧烤配一锅汤更圆满。丸子、鱼饼直接下锅，一包够 3–5 人。</p>
       <div class="plist" id="list-soup"></div>
     </div>
   </section>
@@ -401,7 +407,7 @@
   <section class="section" id="grill">
     <div class="wrap">
       <div class="section-head">
-        <h2>烧烤架 &amp; 炉具<span class="en">Grill &amp; Cooker</span></h2>
+        <h2 data-i18n="h_grill">烧烤架 &amp; 炉具<span class="en">Grill &amp; Cooker</span></h2>
       </div>
       <div class="plist" id="list-grill"></div>
     </div>
@@ -410,9 +416,9 @@
   <section class="section" id="season">
     <div class="wrap">
       <div class="section-head">
-        <h2>调味 &amp; 刷酱<span class="en">Seasoning &amp; Sauces</span></h2>
+        <h2 data-i18n="h_season">调味 &amp; 刷酱<span class="en">Seasoning &amp; Sauces</span></h2>
       </div>
-      <p class="section-note">烤串已腌好，调味粉和刷酱是给烤到一半加香、加辣用的。</p>
+      <p class="section-note" data-i18n="note_season">烤串已腌好，调味粉和刷酱是给烤到一半加香、加辣用的。</p>
       <div class="plist" id="list-season"></div>
     </div>
   </section>
@@ -420,7 +426,7 @@
   <section class="section" id="supplies">
     <div class="wrap">
       <div class="section-head">
-        <h2>烧烤用品<span class="en">Party Supplies</span></h2>
+        <h2 data-i18n="h_supplies">烧烤用品<span class="en">Party Supplies</span></h2>
       </div>
       <div class="plist" id="list-supplies"></div>
     </div>
@@ -429,7 +435,7 @@
   <section class="section" id="extras">
     <div class="wrap">
       <div class="section-head">
-        <h2>其他好物<span class="en">Extras</span></h2>
+        <h2 data-i18n="h_extras">其他好物<span class="en">Extras</span></h2>
       </div>
       <div class="plist" id="list-extras"></div>
     </div>
@@ -437,14 +443,14 @@
 
   <section class="wrap">
     <div class="summary" id="summary">
-      <h3>我的订单</h3>
+      <h3 data-i18n="my_order">我的订单</h3>
       <div class="sum-lines" id="sumLines"><div class="sum-empty">还没选东西，从上面按 + 开始。</div></div>
-      <div class="sum-total"><span class="t">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
+      <div class="sum-total"><span class="t" data-i18n="subtotal">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
       <div class="ship-hint" id="shipHint"></div>
       <div class="sum-note">
-        <p><b>巴生谷</b>　次日送达 · 满 RM 300 免运</p>
-        <p><b>外坡</b>　JB / Seremban / Penang 等 · 2–3 天送达 · 满 RM 500 免运</p>
-        <p><b>付款</b>　银行转账 / 电子钱包 · 运费由客服确认</p>
+        <p data-i18n="sn1"><b>巴生谷</b>　次日送达 · 满 RM 300 免运</p>
+        <p data-i18n="sn2"><b>外坡</b>　JB / Seremban / Penang 等 · 2–3 天送达 · 满 RM 500 免运</p>
+        <p data-i18n="sn3"><b>付款</b>　银行转账 / 电子钱包 · 运费由客服确认</p>
       </div>
     </div>
   </section>
@@ -452,23 +458,23 @@
 
   <section class="seo" id="about">
     <div class="wrap">
-      <h2>关于 BBQ NANNY 烧烤管家<span class="en">BBQ Supplies Delivery Malaysia</span></h2>
-      <p>BBQ NANNY 烧烤管家是马来西亚的<strong>一站式烧烤食材与用品配送</strong>服务。冷冻烤串、丸子鱼饼、涮肉片、火锅汤底、烧烤架、卡式炉、黑炭、调味粉、刷酱到一次性用品，一次订齐，WhatsApp 下单，<strong>巴生谷（KL / PJ / Subang / Puchong / Cheras / Klang）次日送达</strong>，全马冷冻快递 2–3 个工作日。</p>
-      <p lang="en">BBQ Nanny is a one-stop <strong>BBQ supplies delivery service in Malaysia</strong>: pre-marinated frozen skewers, meatballs and fish cakes, shabu sliced meats, hotpot soup base, folding charcoal grills, portable gas cookers, charcoal, seasoning, sauces and disposable party supplies. Order via WhatsApp — next-day delivery across Klang Valley, nationwide frozen courier to JB, Seremban, Penang, Kuantan and more.</p>
+      <h2 data-i18n="h_about">关于 BBQ NANNY 烧烤管家<span class="en">BBQ Supplies Delivery Malaysia</span></h2>
+      <p class="only-cn">BBQ NANNY 烧烤管家是马来西亚的<strong>一站式烧烤食材与用品配送</strong>服务。冷冻烤串、丸子鱼饼、涮肉片、火锅汤底、烧烤架、卡式炉、黑炭、调味粉、刷酱到一次性用品，一次订齐，WhatsApp 下单，<strong>巴生谷（KL / PJ / Subang / Puchong / Cheras / Klang）次日送达</strong>，全马冷冻快递 2–3 个工作日。</p>
+      <p lang="en" class="only-en">BBQ Nanny is a one-stop <strong>BBQ supplies delivery service in Malaysia</strong>: pre-marinated frozen skewers, meatballs and fish cakes, shabu sliced meats, hotpot soup base, folding charcoal grills, portable gas cookers, charcoal, seasoning, sauces and disposable party supplies. Order via WhatsApp — next-day delivery across Klang Valley, nationwide frozen courier to JB, Seremban, Penang, Kuantan and more.</p>
       <div class="faq">
-        <details><summary>吉隆坡 / 巴生谷哪里可以买烧烤食材送到家？</summary><p>在本页选好数量，按「去下单」用 WhatsApp 发单即可。巴生谷同城配送次日送达，满 RM 300 免运费。</p></details>
-        <details><summary>外坡（JB、Seremban、Penang、Kuantan 等）可以送吗？</summary><p>可以。全马冷冻快递 2–3 个工作日送达，满 RM 500 免运费。</p></details>
-        <details><summary>烤串是腌好的吗？怎么烤？</summary><p>全部已腌制入味，每包 20 串。冷冻保存，烤前解冻，中火烤至表面焦香即可，不用再调味。</p></details>
-        <details><summary>有烧烤架、卡式炉、黑炭吗？</summary><p>有。折叠炭烤架 RM 48/套、便携卡式炉套装 RM 40 起、烧烤黑炭 1kg RM 8，还有鸳鸯锡纸锅、锡纸盒、餐具、烧烤夹等。</p></details>
-        <details><summary>怎么付款？</summary><p>WhatsApp 发单后客服确认运费，用银行转账或电子钱包付款。</p></details>
-        <details><summary lang="en">Do you deliver BBQ sets in KL and Selangor?</summary><p lang="en">Yes. Next-day delivery across Klang Valley (free above RM 300) and nationwide frozen courier in 2–3 working days (free above RM 500). Order on this page and send via WhatsApp.</p></details>
+        <details data-i18n="faq1"><summary>吉隆坡 / 巴生谷哪里可以买烧烤食材送到家？</summary><p>在本页选好数量，按「去下单」用 WhatsApp 发单即可。巴生谷同城配送次日送达，满 RM 300 免运费。</p></details>
+        <details data-i18n="faq2"><summary>外坡（JB、Seremban、Penang、Kuantan 等）可以送吗？</summary><p>可以。全马冷冻快递 2–3 个工作日送达，满 RM 500 免运费。</p></details>
+        <details data-i18n="faq3"><summary>烤串是腌好的吗？怎么烤？</summary><p>全部已腌制入味，每包 20 串。冷冻保存，烤前解冻，中火烤至表面焦香即可，不用再调味。</p></details>
+        <details data-i18n="faq4"><summary>有烧烤架、卡式炉、黑炭吗？</summary><p>有。折叠炭烤架 RM 48/套、便携卡式炉套装 RM 40 起、烧烤黑炭 1kg RM 8，还有鸳鸯锡纸锅、锡纸盒、餐具、烧烤夹等。</p></details>
+        <details data-i18n="faq5"><summary>怎么付款？</summary><p>WhatsApp 发单后客服确认运费，用银行转账或电子钱包付款。</p></details>
+        <details data-i18n="faq6"><summary>可以整批订给公司活动 / 派对吗？</summary><p>可以。人数多请提前 2 天 WhatsApp 我们，可按人数配好烤串、丸子、肉片和用品。</p></details>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="wrap">
-      <div class="disclaimer">
+      <div class="disclaimer" data-i18n="disclaimer">
         <b>免责声明 Disclaimer</b>
         <ol>
           <li>图片仅供参考，产品以实物为准。</li>
@@ -490,58 +496,58 @@
 <div class="bar">
   <div class="in">
     <div class="tot"><small id="barSub">未选择</small><b id="barTotal">RM 0.00</b></div>
-    <button class="btn btn-ember" id="checkoutBtn" type="button" disabled>去下单</button>
+    <button class="btn btn-ember" id="checkoutBtn" type="button" disabled data-i18n="checkout">去下单</button>
   </div>
 </div>
 
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
     <div class="modal-head">
-      <h3 id="modalTitle">确认订单</h3>
+      <h3 id="modalTitle" data-i18n="confirm">确认订单</h3>
       <button class="close" id="closeModal" type="button" aria-label="关闭">×</button>
     </div>
 
     <div class="m-block">
       <h4>Order</h4>
       <div class="m-lines" id="mLines"></div>
-      <div class="m-total"><span>货品合计</span><span class="v" id="mTotal">RM 0.00</span></div>
+      <div class="m-total"><span data-i18n="subtotal2">货品合计</span><span class="v" id="mTotal">RM 0.00</span></div>
       <div class="m-ship" id="mShip"></div>
     </div>
 
     <div class="m-block">
       <h4>Delivery</h4>
       <div class="grid2">
-        <div class="field"><label for="fName">姓名 <i>*</i></label><input id="fName" type="text" autocomplete="name" placeholder="怎么称呼"></div>
-        <div class="field"><label for="fPhone">电话 <i>*</i></label><input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="012-345 6789"></div>
+        <div class="field"><label for="fName" data-i18n="l_name">姓名 <i>*</i></label><input id="fName" type="text" autocomplete="name" placeholder="怎么称呼" data-i18n-ph="ph_name"></div>
+        <div class="field"><label for="fPhone" data-i18n="l_phone">电话 <i>*</i></label><input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="012-345 6789"></div>
       </div>
       <div class="field">
-        <label>配送方式 <i>*</i></label>
+        <label data-i18n="l_ship">配送方式 <i>*</i></label>
         <div class="choice" id="fShip" role="radiogroup" aria-label="配送方式">
-          <label><input type="radio" name="ship" value="巴生谷 Klang Valley · 同城配送（次日送达）"><span><b>同城配送 · 次日送达</b><small>巴生谷 Klang Valley</small></span></label>
-          <label><input type="radio" name="ship" value="外坡 Outstation · 冷冻快递（2–3 个工作日）"><span><b>冷冻快递 · 2–3 个工作日</b><small>外坡 Outstation：JB、Seremban、Penang、Kuantan、Pahang 等</small></span></label>
+          <label><input type="radio" name="ship" value="巴生谷 Klang Valley · 同城配送（次日送达）"><span data-i18n="opt_kv"><b>同城配送 · 次日送达</b><small>巴生谷 Klang Valley</small></span></label>
+          <label><input type="radio" name="ship" value="外坡 Outstation · 冷冻快递（2–3 个工作日）"><span data-i18n="opt_out"><b>冷冻快递 · 2–3 个工作日</b><small>外坡 Outstation：JB、Seremban、Penang、Kuantan、Pahang 等</small></span></label>
         </div>
       </div>
-      <div class="field"><label for="fAddr">送货地址 <i id="addrReq">*</i></label><textarea id="fAddr" autocomplete="street-address" placeholder="门牌、街道、Taman、邮编、城市"></textarea></div>
+      <div class="field"><label for="fAddr" data-i18n="l_addr">送货地址 <i id="addrReq">*</i></label><textarea id="fAddr" autocomplete="street-address" placeholder="门牌、街道、Taman、邮编、城市" data-i18n-ph="ph_addr"></textarea></div>
       <div class="grid2">
-        <div class="field"><label for="fDate">烧烤日期</label><input id="fDate" type="date"></div>
-        <div class="field"><label for="fNote">备注</label><input id="fNote" type="text" placeholder="例：下午 4 点前送到"></div>
+        <div class="field"><label for="fDate" data-i18n="l_date">烧烤日期</label><input id="fDate" type="date"></div>
+        <div class="field"><label for="fNote" data-i18n="l_note">备注</label><input id="fNote" type="text" placeholder="例：下午 4 点前送到" data-i18n-ph="ph_note"></div>
       </div>
     </div>
 
-    <p class="m-err" id="mErr">请填好姓名、电话、配送方式和地址。</p>
-    <p class="m-hint">点下面按钮会打开 WhatsApp，订单明细已自动写好，按发送即可。客服会回复运费、送货时间与付款方式。</p>
+    <p class="m-err" id="mErr" data-i18n="err">请填好姓名、电话、配送方式和地址。</p>
+    <p class="m-hint" data-i18n="hint">点下面按钮会打开 WhatsApp，订单明细已自动写好，按发送即可。客服会回复运费、送货时间与付款方式。</p>
     <div class="m-actions">
       <button class="btn btn-wa" id="sendWa" type="button">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>
-        WhatsApp 发送订单
+        <span data-i18n="send">WhatsApp 发送订单</span>
       </button>
-      <button class="btn btn-ghost" id="backBtn" type="button" style="color:var(--ink);border-color:var(--line);background:var(--surface)">返回修改</button>
+      <button class="btn btn-ghost" id="backBtn" type="button" style="color:var(--ink);border-color:var(--line);background:var(--surface)" data-i18n="back">返回修改</button>
     </div>
   </div>
 </div>
 
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp 联系我们">
-  <span class="wa-label">WhatsApp 下单 / 咨询</span>
+  <span class="wa-label" data-i18n="wa_float">WhatsApp 下单 / 咨询</span>
   <span class="wa-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg></span>
 </a>
 
@@ -600,10 +606,10 @@
       { id: "bl03", cn: "鱼丸", en: "Fish Ball", img: "bl03.jpg", tags: [], desc: "经典鱼丸，弹牙爽口，烤煮皆宜。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
       { id: "bl04", cn: "香菇丸子", en: "Shiitake Ball", img: "bl04.jpg", tags: [], desc: "加入香菇粒，菇香浓郁，口感扎实。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
       { id: "bl05", cn: "鱼豆腐", en: "Tofu Fish Cake", img: "bl05.jpg", tags: ["hot"], desc: "外层金黄，内里绵滑，烧烤火锅必备。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
-      { id: "bl07", cn: "包心鸡肉丸", en: "Chicken Bao Xin Ball", img: "bl07.jpg", tags: [], desc: "咬开有馅，鸡肉多汁，一口一个。", rows: [{ spec: "1 包 · 200g", price: 9.00 }] },
       { id: "bl08", cn: "潮汕牛肉丸子", en: "Beef Ball", img: "bl08.jpg", tags: ["hot"], desc: "潮汕手打风味，弹牙有嚼劲。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
       { id: "bl09", cn: "马来乌达鱼片", en: "Otah Fish Cake", img: "bl09.jpg", tags: [], desc: "本地乌达风味，香辣椰香，烤后更香。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
       { id: "bl10", cn: "潮州鱼片", en: "Teochew Fish Cake", img: "bl10.jpg", tags: [], desc: "潮州鱼饼切片，鲜甜有弹性。", rows: [{ spec: "1 包 · 200g", price: 8.00 }] },
+      { id: "bl07", cn: "包心鸡肉丸", en: "Chicken Bao Xin Ball", img: "bl07.jpg", tags: [], desc: "咬开有馅，鸡肉多汁，一口一个。", rows: [{ spec: "1 包 · 200g", price: 9.00 }] },
       { id: "bl11", cn: "鸡肉芝士丸子", en: "Chicken Cheese Ball", img: "bl11.jpg", tags: ["hot"], desc: "咬开芝士爆浆，大人小孩都抢着吃。", rows: [{ spec: "1 包 · 200g", price: 9.00 }] }
     ],
     meat: [
@@ -673,6 +679,107 @@
     ]
   };
   var ORDER = ["skewers", "balls", "meat", "soup", "grill", "season", "supplies", "extras"];
+
+  /* ============ 双语 CN / EN ============ */
+  var lang = "cn";
+  try { lang = localStorage.getItem("bbqnanny_lang") === "en" ? "en" : "cn"; } catch (e) {}
+  var EN = {
+    lead: "Pre-marinated frozen skewers, grills, seasoning, sauces and disposable supplies — all in one order. Order via WhatsApp and we arrange delivery.",
+    cta: "🔥 Order Now — Everything in One Go", cta_wa: "Chat on WhatsApp",
+    fact1: "<b>Marinated</b><span>Thaw &amp; grill<br>no seasoning</span>",
+    fact2: "<b>Frozen</b><span>KV next-day<br>Outstation 2–3 days</span>",
+    fact3: "<b>Free Ship</b><span>KV above RM 300<br>Outstation above RM 500</span>",
+    nav_skewers: "🍢 Frozen Skewers", nav_balls: "🍡 Balls &amp; Fish Cakes", nav_meat: "🥩 Sliced Meats", nav_soup: "🍲 Soup Base", nav_grill: "🔥 Grill &amp; Cooker", nav_season: "🧂 Seasoning &amp; Sauces", nav_supplies: "🧰 Supplies", nav_extras: "🌿 Extras",
+    h_skewers: "Frozen Skewers<span class=\"en\">冷冻烤串</span>", h_balls: "Balls &amp; Fish Cakes<span class=\"en\">丸子 &amp; 鱼饼</span>", h_meat: "Sliced Meats<span class=\"en\">涮肉片 / 烤肉片</span>", h_soup: "Hotpot Soup Base<span class=\"en\">火锅汤底</span>", h_grill: "Grill &amp; Cooker<span class=\"en\">烧烤架 &amp; 炉具</span>", h_season: "Seasoning &amp; Sauces<span class=\"en\">调味 &amp; 刷酱</span>", h_supplies: "Party Supplies<span class=\"en\">烧烤用品</span>", h_extras: "Extras<span class=\"en\">其他好物</span>",
+    note_skewers: "Keep frozen. Thaw before grilling and cook over medium heat until lightly charred.",
+    note_balls: "Great on the grill or in hotpot. Skewer them or drop straight into the pot — kids love these.",
+    note_meat: "Thinly sliced frozen meats for hotpot or the grill plate. Buy 3 boxes of the same item for a bundle price, applied automatically.",
+    note_soup: "Pair your BBQ with a pot of soup. Drop in balls and fish cakes — one pack serves 3–5.",
+    note_season: "Skewers are already marinated; use the powder and sauces for extra aroma and heat mid-grill.",
+    my_order: "My Order", subtotal: "Subtotal", subtotal2: "Subtotal",
+    sn1: "<b>Klang Valley</b>　Next-day delivery · Free above RM 300",
+    sn2: "<b>Outstation</b>　JB / Seremban / Penang etc. · 2–3 days · Free above RM 500",
+    sn3: "<b>Payment</b>　Bank transfer / e-wallet · Delivery fee confirmed by our team",
+    checkout: "Checkout", confirm: "Confirm Order",
+    l_name: "Name <i>*</i>", l_phone: "Phone <i>*</i>", l_ship: "Delivery <i>*</i>", l_addr: "Delivery address <i id=\"addrReq\">*</i>", l_date: "BBQ date", l_note: "Note",
+    ph_name: "Your name", ph_addr: "House no., street, Taman, postcode, city", ph_note: "e.g. deliver before 4pm",
+    opt_kv: "<b>Same-day courier · Next-day delivery</b><small>Klang Valley 巴生谷</small>",
+    opt_out: "<b>Frozen courier · 2–3 working days</b><small>Outstation: JB, Seremban, Penang, Kuantan, Pahang etc.</small>",
+    err: "Please fill in your name, phone, delivery option and address.",
+    hint: "The button below opens WhatsApp with your order already written — just tap send. Our team will confirm the delivery fee, timing and payment.",
+    send: "Send Order via WhatsApp", back: "Back", wa_float: "Order / Ask on WhatsApp",
+    h_about: "About BBQ NANNY<span class=\"en\">烧烤管家 · BBQ Supplies Delivery Malaysia</span>",
+    faq1: "<summary>Where can I get BBQ food delivered in KL / Klang Valley?</summary><p>Pick your quantities on this page, tap Checkout and send the order via WhatsApp. Next-day delivery across Klang Valley, free above RM 300.</p>",
+    faq2: "<summary>Do you deliver outstation (JB, Seremban, Penang, Kuantan)?</summary><p>Yes — frozen courier nationwide in 2–3 working days, free above RM 500.</p>",
+    faq3: "<summary>Are the skewers marinated? How do I cook them?</summary><p>All skewers are pre-marinated, 20 sticks per pack. Keep frozen, thaw, then grill over medium heat until lightly charred. No extra seasoning needed.</p>",
+    faq4: "<summary>Do you sell grills, gas cookers and charcoal?</summary><p>Yes. Folding charcoal grill RM 48/set, portable gas cooker set from RM 40, charcoal 1kg RM 8, plus disposable hotpot trays, foil trays, cutlery and tongs.</p>",
+    faq5: "<summary>How do I pay?</summary><p>After you send the order on WhatsApp, our team confirms the delivery fee and you pay by bank transfer or e-wallet.</p>",
+    faq6: "<summary>Can I order in bulk for company events or parties?</summary><p>Yes. For large groups, WhatsApp us 2 days ahead and we will portion skewers, balls, meats and supplies by headcount.</p>",
+    disclaimer: "<b>Disclaimer 免责声明</b><ol><li>Images are for reference only; actual products may vary.</li><li>Keep frozen items frozen immediately upon receipt. We are not responsible for spoilage caused by delayed freezing or improper storage.</li><li>Use grills, charcoal, gas cookers and gas cans as instructed in a ventilated area, away from children and flammables. We accept no liability for losses from improper use.</li><li>Prices and stock are subject to change and confirmed by our team. No returns or exchanges once an order is paid and confirmed.</li><li>Placing an order means you have read and agreed to these terms.</li></ol>",
+    /* dynamic */
+    empty: "Nothing selected yet — tap + on any item above.", none: "Nothing selected",
+    sel: "{n} items", free_all: "✓ Free delivery nationwide", free_kv: "✓ Free delivery (Klang Valley)", more_kv: "add {x} for free KV delivery",
+    sh_default: "Free delivery: Klang Valley above <b>RM 300</b> · Outstation above <b>RM 500</b>",
+    sh_all: "✓ RM 500 reached — free delivery nationwide",
+    sh_kv: "✓ RM 300 reached — free Klang Valley delivery · add <b>{x}</b> for free outstation delivery too",
+    sh_more: "Add <b>{x}</b> for free Klang Valley delivery (outstation above RM 500)",
+    ms_pick: "Delivery fee: choose a delivery option first (free above RM 300 KV / RM 500 outstation)",
+    ms_free: "✓ Above RM {t} — free delivery", ms_more: "Delivery fee: add {x} for free delivery, otherwise confirmed by our team",
+    toast: "WhatsApp opened — just tap send ✓", deal: "💰 {n} for RM {p}", deal_line: "{n}-for-RM {p} deal", hot: "🔥 Popular", spicy: "🌶 Spicy"
+  };
+  var SPEC_EN = {
+    "1 包 · 20 串 · 400g": "1 pack · 20 sticks · 400g", "1 包 · 20 块中翅": "1 pack · 20 mid-wings", "1 包 · 10 串": "1 pack · 10 sticks",
+    "1 包 · 12 粒 · 180g": "1 pack · 12 pcs · 180g", "1 包 · 65g": "1 pack · 65g", "1 包 · 200g": "1 pack · 200g", "1 盒 · 200g": "1 box · 200g",
+    "1 套": "1 set", "炉 1 个 + 气罐 1 罐": "1 cooker + 1 gas can", "炉 1 个 + 气罐 4 罐": "1 cooker + 4 gas cans",
+    "230g Butane Gas · 多 3 罐只加 RM 10，够烤一整晚": "230g butane gas · 3 extra cans for only RM 10 more — enough for the whole night",
+    "1 套 · 原味 ×2 + 香辣 ×2": "1 set · Original ×2 + Spicy ×2", "4 包 × 2g": "4 sachets × 2g",
+    "原味": "Original", "香辣": "Spicy", "1 包 · 130g": "1 pack · 130g", "原味蒜蓉酱": "Original garlic", "香辣蒜蓉酱": "Spicy garlic", "1 包 · 132g": "1 pack · 132g",
+    "2 个": "2 pcs", "L size · 370 × 270 × 70 mm": "L size · 370 × 270 × 70 mm", "1 套 · 2 支": "1 set · 2 pcs", "不锈钢": "Stainless steel",
+    "1 套 · 10 人用": "1 set · serves 10", "1 个 · 带盖": "1 pc · with lid", "2.4L · 336 × 296 mm": "2.4L · 336 × 296 mm",
+    "1 粒": "1 pc", "80g": "80g", "5 粒装": "Pack of 5", "80g × 5 · 范围广，安心免受蚊虫干扰": "80g × 5 · wide coverage, keep mosquitoes away",
+    "1 包 · 1kg": "1 pack · 1kg"
+  };
+  var DESC_EN = {
+    sk01: "Cumin-scented chicken thigh skewers, tender and juicy — loved by kids and adults.", sk02: "Xinjiang-style mutton with the right fat ratio — best over charcoal.", sk03: "Well-marinated beef cubes, one bite each.",
+    sk04: "Mala-marinated chicken that gets more fragrant as it grills — perfect with a cold drink.", sk05: "Double hit of Sichuan pepper and chilli with the juices locked in.", sk06: "Mala meets mutton — the bold-flavour favourite.",
+    sk07: "Crunchy, chewy chicken gizzard — more-ish with every bite.", sk08: "Garlic-marinated mid-wings, charred outside and tender inside.", sk09: "Bouncy squid cubes — even better brushed with sauce.",
+    sk10: "Plain mini mantou — grill until golden and crisp outside.", sk11: "Vanilla marshmallows — skewer and toast until crisp outside, gooey inside.",
+    bl01: "Thai-spiced fish cake, fragrant outside and tender inside — best lightly charred.", bl02: "Mixed vegetable balls, light and refreshing — kids love them.", bl03: "Classic bouncy fish balls, great grilled or boiled.",
+    bl04: "Packed with shiitake for a rich, mushroomy bite.", bl05: "Golden outside, silky inside — a BBQ and hotpot must-have.", bl07: "Juicy chicken filling inside — one bite each.",
+    bl08: "Teochew hand-pounded style, springy and chewy.", bl09: "Local otah flavour with a coconut-chilli kick, even better grilled.", bl10: "Teochew fish cake slices, sweet and bouncy.", bl11: "Bite in for a cheese burst — kids fight over these.",
+    mt01: "Shabu-shabu beef slices with even marbling — cooks in 10 seconds.", mt02: "Shabu-shabu lamb slices with a good fat ratio — great for hotpot or grill.", mt03: "Shabu-shabu chicken slices, light and tender — kids approved.",
+    sp01: "Rich, collagen-packed fish maw chicken soup base — just add water and chicken.", sp02: "Authentic Sichuan mala with numbing pepper aroma — one pack, many uses.",
+    gr01: "Folding charcoal grill 60 × 22.5 × 32 cm with pull-out charcoal tray, grill net, charcoal net and box — ready to go. Brand new, clean and hygienic — no shared grills.",
+    gr04: "Easy to light, steady heat, low smoke.", gr02: "Portable gas cooker for hotpot, soup or stir-fry. Colour is random and cannot be chosen. Image for reference; brand may vary.",
+    se01: "Individual sachets — sprinkle mid-grill for instant aroma.", se02: "Haitian BBQ sauce in a 130g squeeze pack — brush while grilling. Any 2 packs for RM 10, applied automatically.", se03: "Semi-solid garlic sauce in a 132g squeeze pack — great on squid, wings and vegetables. Any 2 packs for RM 15, applied automatically.",
+    su03: "L size, for cooked skewers or to catch drips under the grill.", su05: "Stainless-steel ladle and skimmer — scoop and strain in one set.", su02: "Thick disposable bowls, plates and chopsticks.",
+    su04: "Food-grade foil yin-yang hotpot 2.4L with foil lid — heat directly on a gas cooker, then throw away. No washing.", su01: "All in one: tongs ×1, charcoal tongs ×1, oil brushes ×2, stainless skewers, bamboo skewers, seasoning shakers ×2. Use and toss — no washing.",
+    ex01: "Plant-oil citronella candle — light one outdoors for gentle mosquito protection."
+  };
+  function T(k) { return lang === "en" && EN[k] !== undefined ? EN[k] : null; }
+  function tr(spec) { return lang === "en" ? (SPEC_EN[spec] || spec) : spec; }
+  function fmt(str, o) { return str.replace(/\{(\w+)\}/g, function (_, k) { return o[k]; }); }
+  var i18nCache = {};
+  function applyStatic() {
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (!(k in i18nCache)) i18nCache[k] = el.innerHTML;
+      var v = T(k);
+      el.innerHTML = v !== null ? v : i18nCache[k];
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-ph");
+      if (!(k in i18nCache)) i18nCache[k] = el.getAttribute("placeholder");
+      var v = T(k); el.setAttribute("placeholder", v !== null ? v : i18nCache[k]);
+    });
+    document.documentElement.lang = lang === "en" ? "en" : "zh-Hans";
+    document.getElementById("langBtn").textContent = lang === "en" ? "中文" : "EN";
+  }
+  function setLang(l) {
+    lang = l; try { localStorage.setItem("bbqnanny_lang", l); } catch (e) {}
+    applyStatic(); render(); if (document.getElementById("overlay").classList.contains("show")) { openModal(); }
+  }
+
   var TAG_LABEL = { hot: "🔥 人气", spicy: "🌶 麻辣", deal: "💰 2 包 RM 10" };
 
   var qty = {};
@@ -694,11 +801,12 @@
         if (p.img) html += '<div class="thumb"><img src="' + p.img + '" alt="' + esc(p.cn) + '" loading="lazy" width="96" height="96"></div>';
         else html += '<div class="thumb"><div class="glyph">' + p.glyph + '</div></div>';
         html += '<div class="p-body">';
-        html += '<div class="p-name"><span class="cn">' + esc(p.cn) + '</span><span class="en">' + esc(p.en) + '</span></div>';
+        var nm = lang === "en" ? p.en : p.cn, nm2 = lang === "en" ? p.cn : p.en;
+        html += '<div class="p-name"><span class="cn">' + esc(nm) + '</span><span class="en">' + esc(nm2) + '</span></div>';
         var badges = "";
-        (p.tags || []).forEach(function (t) { badges += '<span class="badge ' + t + '">' + (t === "deal" && p.bundle ? "💰 " + p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(0) : TAG_LABEL[t]) + '</span>'; });
+        (p.tags || []).forEach(function (t) { var lbl = (t === "deal" && p.bundle) ? (lang === "en" ? fmt(EN.deal, { n: p.bundle.n, p: p.bundle.price.toFixed(0) }) : "💰 " + p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(0)) : (lang === "en" ? (EN[t] || TAG_LABEL[t]) : TAG_LABEL[t]); badges += '<span class="badge ' + t + '">' + lbl + '</span>'; });
         if (badges) html += '<div class="badges">' + badges + '</div>';
-        html += '<div class="p-desc">' + esc(p.desc) + '</div>';
+        html += '<div class="p-desc">' + esc(lang === "en" ? (DESC_EN[p.id] || p.desc) : p.desc) + '</div>';
         html += '<div class="rows">';
         p.rows.forEach(function (r, i) {
           var k = key(p.id, i);
@@ -708,7 +816,7 @@
             return;
           }
           html += '<div class="row" data-key="' + k + '">';
-          html += '<div class="spec"><b>' + esc(r.spec) + '</b>' + (r.sub ? '<span class="sub">' + esc(r.sub) + '</span>' : '') + '</div>';
+          html += '<div class="spec"><b>' + esc(tr(r.spec)) + '</b>' + (r.sub ? '<span class="sub">' + esc(tr(r.sub)) + '</span>' : '') + '</div>';
           html += '<div class="price">' + money(r.price) + '</div>';
           html += '<div class="stepper' + (n > 0 ? " on" : "") + '">';
           html += '<button type="button" class="dec" aria-label="减少">−</button>';
@@ -744,13 +852,13 @@
         if (n > 0 && r.price !== null) {
           var amt = n * r.price;
           total += amt; count += n; packs += n; unit = r.price;
-          lines.push({ name: p.cn, spec: r.spec + (r.sub ? " " + r.sub : ""), n: n, amount: amt });
+          lines.push({ name: lang === "en" ? p.en : p.cn, spec: tr(r.spec) + (r.sub ? " " + tr(r.sub) : ""), n: n, amount: amt });
         }
       });
       if (p.bundle && packs >= p.bundle.n) {
         var groups = Math.floor(packs / p.bundle.n);
         var disc = groups * (p.bundle.n * unit - p.bundle.price);
-        if (disc > 0) { total -= disc; lines.push({ name: p.cn, spec: p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(2) + " 优惠", n: groups, amount: -disc, disc: true }); }
+        if (disc > 0) { total -= disc; lines.push({ name: lang === "en" ? p.en : p.cn, spec: lang === "en" ? fmt(EN.deal_line, { n: p.bundle.n, p: p.bundle.price.toFixed(2) }) : p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(2) + " 优惠", n: groups, amount: -disc, disc: true }); }
       }
     });
     return { lines: lines, total: total, count: count };
@@ -764,25 +872,27 @@
       el.classList.toggle("has-qty", has);
     });
     document.getElementById("barTotal").textContent = money(o.total);
-    var barSub = "未选择";
+    var barSub = lang === "en" ? EN.none : "未选择";
     if (o.count > 0) {
-      if (o.total >= FREE_OUT) barSub = "已选 " + o.count + " 件 · ✓ 全马免运费";
-      else if (o.total >= FREE_KV) barSub = "已选 " + o.count + " 件 · ✓ 巴生谷免运费";
-      else barSub = "已选 " + o.count + " 件 · 再买 " + money(FREE_KV - o.total) + " 巴生谷免运";
+      var selTxt = lang === "en" ? fmt(EN.sel, { n: o.count }) : "已选 " + o.count + " 件";
+      if (o.total >= FREE_OUT) barSub = selTxt + " · " + (lang === "en" ? EN.free_all : "✓ 全马免运费");
+      else if (o.total >= FREE_KV) barSub = selTxt + " · " + (lang === "en" ? EN.free_kv : "✓ 巴生谷免运费");
+      else barSub = selTxt + " · " + (lang === "en" ? fmt(EN.more_kv, { x: money(FREE_KV - o.total) }) : "再买 " + money(FREE_KV - o.total) + " 巴生谷免运");
     }
     document.getElementById("barSub").textContent = barSub;
     var sh = document.getElementById("shipHint");
-    if (o.count === 0) { sh.innerHTML = "巴生谷满 <b>RM 300</b> 免运费 · 外坡满 <b>RM 500</b> 免运费"; sh.classList.remove("free"); }
-    else if (o.total >= FREE_OUT) { sh.innerHTML = "✓ 已达 RM 500，全马免运费"; sh.classList.add("free"); }
-    else if (o.total >= FREE_KV) { sh.innerHTML = "✓ 已达 RM 300，巴生谷免运费 · 外坡再买 <b>" + money(FREE_OUT - o.total) + "</b> 也免运"; sh.classList.remove("free"); sh.classList.add("free"); }
-    else { sh.innerHTML = "再买 <b>" + money(FREE_KV - o.total) + "</b> 巴生谷免运费（外坡满 RM 500）<div class=\"bar-track\"><div class=\"bar-fill\" style=\"width:" + Math.min(100, o.total / FREE_KV * 100) + "%\"></div></div>"; sh.classList.remove("free"); }
+    var en = lang === "en";
+    if (o.count === 0) { sh.innerHTML = en ? EN.sh_default : "巴生谷满 <b>RM 300</b> 免运费 · 外坡满 <b>RM 500</b> 免运费"; sh.classList.remove("free"); }
+    else if (o.total >= FREE_OUT) { sh.innerHTML = en ? EN.sh_all : "✓ 已达 RM 500，全马免运费"; sh.classList.add("free"); }
+    else if (o.total >= FREE_KV) { sh.innerHTML = en ? fmt(EN.sh_kv, { x: money(FREE_OUT - o.total) }) : "✓ 已达 RM 300，巴生谷免运费 · 外坡再买 <b>" + money(FREE_OUT - o.total) + "</b> 也免运"; sh.classList.add("free"); }
+    else { sh.innerHTML = (en ? fmt(EN.sh_more, { x: money(FREE_KV - o.total) }) : "再买 <b>" + money(FREE_KV - o.total) + "</b> 巴生谷免运费（外坡满 RM 500）") + "<div class=\"bar-track\"><div class=\"bar-fill\" style=\"width:" + Math.min(100, o.total / FREE_KV * 100) + "%\"></div></div>"; sh.classList.remove("free"); }
     document.getElementById("checkoutBtn").disabled = o.count === 0;
     document.getElementById("cartPill").classList.toggle("show", o.count > 0);
     document.getElementById("cartCount").textContent = o.count;
     document.getElementById("cartTotal").textContent = money(o.total);
     document.getElementById("sumTotal").textContent = money(o.total);
     var sl = document.getElementById("sumLines");
-    if (!o.lines.length) { sl.innerHTML = '<div class="sum-empty">还没选东西，从上面按 + 开始。</div>'; return; }
+    if (!o.lines.length) { sl.innerHTML = '<div class="sum-empty">' + (lang === "en" ? EN.empty : "还没选东西，从上面按 + 开始。") + '</div>'; return; }
     sl.innerHTML = o.lines.map(function (l) {
       return '<div class="sum-line' + (l.disc ? ' disc' : '') + '"><span>' + esc(l.name + " · " + l.spec) + ' × ' + l.n + '</span><b>' + money(l.amount) + '</b></div>';
     }).join("");
@@ -808,12 +918,12 @@
     var o = orderLines();
     var r = document.querySelector('input[name="ship"]:checked');
     var v = r ? r.value : "";
-    if (v.indexOf("自取") >= 0) return { free: true, text: "自取，无运费" };
     var out = v.indexOf("外坡") >= 0;
     var th = out ? FREE_OUT : FREE_KV;
-    if (!v) return { free: false, text: "运费：请先选配送方式（巴生谷满 RM 300 / 外坡满 RM 500 免运）" };
-    if (o.total >= th) return { free: true, text: "✓ 满 RM " + th + "，免运费" };
-    return { free: false, text: "运费：再买 " + money(th - o.total) + " 即免运费，否则由客服按地址回复" };
+    var en = lang === "en";
+    if (!v) return { free: false, text: en ? EN.ms_pick : "运费：请先选配送方式（巴生谷满 RM 300 / 外坡满 RM 500 免运）" };
+    if (o.total >= th) return { free: true, text: en ? fmt(EN.ms_free, { t: th }) : "✓ 满 RM " + th + "，免运费" };
+    return { free: false, text: en ? fmt(EN.ms_more, { x: money(th - o.total) }) : "运费：再买 " + money(th - o.total) + " 即免运费，否则由客服按地址回复" };
   }
   function updateModalShip() {
     var st = shipStatus(); var el = document.getElementById("mShip");
@@ -840,7 +950,8 @@
   function buildMessage() {
     var o = orderLines();
     var st = shipStatus();
-    var t = "🔥 BBQ NANNY 订单\n\n🛒 订单\n";
+    var en = lang === "en";
+    var t = (en ? "🔥 BBQ NANNY Order" : "🔥 BBQ NANNY 订单") + "\n\n" + (en ? "🛒 Items" : "🛒 订单") + "\n";
     var i = 0;
     allProducts().forEach(function (p) {
       var parts = [], packs = 0, amt = 0, unit = 0;
@@ -848,7 +959,7 @@
         var n = qty[key(p.id, idx)] || 0;
         if (n > 0 && r.price !== null) {
           packs += n; amt += n * r.price; unit = r.price;
-          parts.push((p.rows.length > 1 ? r.spec + " " : "") + "×" + n);
+          parts.push((p.rows.length > 1 ? tr(r.spec) + " " : "") + "×" + n);
         }
       });
       if (!packs) return;
@@ -856,26 +967,28 @@
       if (p.bundle && packs >= p.bundle.n) {
         var groups = Math.floor(packs / p.bundle.n);
         var disc = groups * (p.bundle.n * unit - p.bundle.price);
-        if (disc > 0) { amt -= disc; note = "（" + p.bundle.n + p.bundle.unit + "优惠价）"; }
+        if (disc > 0) { amt -= disc; note = en ? " (" + p.bundle.n + "-for-RM " + p.bundle.price.toFixed(0) + " deal)" : "（" + p.bundle.n + p.bundle.unit + "优惠价）"; }
       }
       i++;
-      t += i + ". " + p.cn + " " + parts.join("、") + " — " + money(amt) + note + "\n";
+      t += i + ". " + p.cn + " " + p.en + " " + parts.join(en ? ", " : "、") + " — " + money(amt) + note + "\n";
     });
-    t += "\n💰 合计 " + money(o.total) + "\n";
-    t += "🚚 运费：" + (st.free ? "免运费 ✓" : "待客服确认") + "\n";
-    t += "\n📦 配送资料\n";
+    t += "\n" + (en ? "💰 Total " : "💰 合计 ") + money(o.total) + "\n";
+    t += (en ? "🚚 Delivery fee: " : "🚚 运费：") + (st.free ? (en ? "Free ✓" : "免运费 ✓") : (en ? "to be confirmed" : "待客服确认")) + "\n";
+    t += "\n" + (en ? "📦 Delivery details" : "📦 配送资料") + "\n";
     t += "👤 " + val("fName") + " · " + val("fPhone") + "\n";
     var ship = document.querySelector('input[name="ship"]:checked');
     t += "🚚 " + (ship ? ship.value : "-") + "\n";
     if (val("fAddr")) t += "📍 " + val("fAddr") + "\n";
-    if (val("fDate")) t += "📅 烧烤日期 " + val("fDate") + "\n";
+    if (val("fDate")) t += (en ? "📅 BBQ date " : "📅 烧烤日期 ") + val("fDate") + "\n";
     if (val("fNote")) t += "📝 " + val("fNote") + "\n";
-    t += "\n麻烦确认付款方式，谢谢 🙏";
+    t += "\n" + (en ? "Please confirm payment details, thank you 🙏" : "麻烦确认付款方式，谢谢 🙏");
     return t;
   }
 
   function init() {
+    applyStatic();
     render();
+    document.getElementById("langBtn").addEventListener("click", function () { setLang(lang === "en" ? "cn" : "en"); });
 
     document.querySelectorAll(".plist").forEach(function (list) {
       list.addEventListener("click", function (e) {
@@ -922,7 +1035,7 @@
       var a = document.createElement("a");
       a.href = url; a.target = "_blank"; a.rel = "noopener";
       document.body.appendChild(a); a.click(); a.remove();
-      toast("已打开 WhatsApp，按发送即可 ✓");
+      toast(lang === "en" ? EN.toast : "已打开 WhatsApp，按发送即可 ✓");
     });
 
     /* category nav highlight */

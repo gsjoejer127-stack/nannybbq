@@ -255,9 +255,8 @@
   .sum-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--line); margin-top: 12px; padding-top: 12px; }
   .sum-total .t { font-weight: 700; }
   .sum-total .v { font-family: var(--f-latin); font-weight: 800; font-size: 26px; color: var(--ember-deep); }
-  .sum-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; display: grid; gap: 10px; }
-  .sum-note p { margin: 0; padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
-  .sum-note p b { color: var(--ink); }
+  .sum-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; display: grid; gap: 4px; padding-left: 2px; }
+  .sum-note p { margin: 0; }
   .ship-hint { margin-top: 12px; background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--ink-soft); }
   .ship-hint b { color: var(--ember-deep); }
   .ship-hint.free { background: var(--halal-soft); color: var(--halal); }
@@ -341,18 +340,35 @@
 
 
   /* ---------- SEO / about ---------- */
-  .seo { padding-block: 26px 4px; }
-  .seo { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
-  .seo h2 { margin: 0 0 10px; font-family: inherit; font-weight: 800; font-size: 21px; letter-spacing: 0; line-height: 1.2; color: var(--ink); }
-  .seo h2 .en { display: block; font-family: var(--f-latin); font-weight: 700; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-top: 4px; }
-  .seo p { font-size: 14px; color: var(--ink); line-height: 1.75; margin: 0 0 10px; letter-spacing: .01em; }
+  .seo { padding-block: 30px 6px; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
+  .about-card { background: var(--surface-2); border-radius: 16px; padding: 18px 16px; }
+  .seo h2 { margin: 0 0 8px; font-family: inherit; font-weight: 800; font-size: 19px; letter-spacing: 0; line-height: 1.25; color: var(--ink); }
+  .seo h2 .en { display: block; font-family: var(--f-latin); font-weight: 700; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ember); margin-top: 5px; }
+  .seo p { font-size: 14px; color: var(--ink-soft); line-height: 1.8; margin: 0; letter-spacing: .01em; }
   .seo strong { color: var(--ink); font-weight: 700; }
-  .faq { display: grid; gap: 6px; margin-top: 12px; }
-  .faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0 12px; }
-  .faq summary { cursor: pointer; font-weight: 700; font-size: 13.5px; padding: 10px 0; color: var(--ink); list-style: none; display: flex; justify-content: space-between; gap: 10px; }
-  .faq summary::after { content: "+"; color: var(--ember); font-family: var(--f-latin); font-weight: 800; flex: none; }
+  .faq-h { margin: 26px 0 10px; font-size: 17px; font-weight: 800; color: var(--ink); display: flex; align-items: baseline; gap: 8px; }
+  .faq-h span { font-family: var(--f-latin); font-weight: 700; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ember); }
+  .faq { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
+  .faq details { border-bottom: 1px solid var(--line); padding: 0 14px; }
+  .faq details:last-child { border-bottom: 0; }
+  .faq summary { cursor: pointer; font-weight: 600; font-size: 14px; padding: 12px 0; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; line-height: 1.4; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--ember); font-family: var(--f-latin); font-weight: 800; font-size: 18px; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--ember-soft); display: grid; place-items: center; line-height: 1; }
   .faq details[open] summary::after { content: "−"; }
-  .faq details p { margin: 0 0 12px; font-size: 13px; }
+  .faq details p { margin: 0 0 13px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; }
+
+  /* ---------- footer ---------- */
+  .footer { padding-block: 26px 14px; color: var(--ink-soft); font-size: 12.5px; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; }
+  .footer .disclaimer { border: 1px dashed var(--line); border-radius: 12px; padding: 12px 14px; line-height: 1.6; color: var(--ink-faint); font-size: 12px; }
+  .footer .disclaimer b { display: block; color: var(--ink-soft); font-size: 12.5px; margin-bottom: 6px; font-weight: 700; }
+  .footer .disclaimer ol { margin: 0; padding-left: 16px; display: grid; gap: 3px; }
+  .footer .sig { margin-top: 26px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+  .footer .sig img { width: 56px; height: auto; margin-bottom: 2px; }
+  .footer .sig b { font-family: var(--f-latin); font-weight: 800; font-size: 16px; color: var(--ink); letter-spacing: .02em; }
+  .footer .sig span { font-size: 12.5px; color: var(--ink-soft); }
+  .footer .foot-wa { margin-top: 10px; padding: 11px 20px; font-size: 14px; border-radius: 999px; }
+  .footer .company { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--ink-faint); line-height: 1.7; text-align: center; }
+  .footer .company b { color: var(--ink-soft); font-weight: 700; letter-spacing: .02em; }
 
   .toast { position: fixed; left: 50%; bottom: 150px; transform: translateX(-50%) translateY(10px); background: var(--ember-deep); color: #fff; padding: 10px 16px; border-radius: 999px; font-size: 13.5px; opacity: 0; transition: opacity .2s, transform .2s; z-index: 70; pointer-events: none; white-space: nowrap; }
   .toast.show { opacity: 1; transform: translateX(-50%); }
@@ -500,9 +516,9 @@
       <div class="sum-total"><span class="t" data-i18n="subtotal">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
       <div class="ship-hint" id="shipHint"></div>
       <div class="sum-note">
-        <p data-i18n="sn1"><b>Klang Valley</b>　同城配送 · 满 RM 300 免运</p>
-        <p data-i18n="sn2"><b>外坡</b>　JB / Seremban / Penang 等 · 冷冻快递 · 满 RM 500 免运</p>
-        <p data-i18n="sn3"><b>付款</b>　银行转账 / 电子钱包 · 运费由客服确认</p>
+        <p data-i18n="sn1">🚚 Klang Valley 同城配送 · 满 RM 300 免运</p>
+        <p data-i18n="sn2">📦 外坡冷冻快递 · 满 RM 500 免运</p>
+        <p data-i18n="sn3">💳 转账 / 电子钱包 · 运费客服确认</p>
       </div>
     </div>
   </section>
@@ -510,9 +526,12 @@
 
   <section class="seo" id="about">
     <div class="wrap">
+      <div class="about-card">
       <h2 data-i18n="h_about">关于 BBQ NANNY 烧烤管家<span class="en">BBQ Supplies Delivery Malaysia</span></h2>
       <p class="only-cn">BBQ NANNY 烧烤管家是马来西亚的<strong>一站式烧烤食材与用品配送</strong>服务。冷冻烤串、丸子鱼饼、涮肉片、火锅汤底、烧烤架、卡式炉、黑炭、调味粉、刷酱到一次性用品，一次订齐，WhatsApp 下单，<strong>Klang Valley（KL / PJ / Subang / Puchong / Cheras / Klang）同城配送</strong>，全西马冷冻快递。</p>
       <p lang="en" class="only-en">BBQ Nanny is a one-stop <strong>BBQ supplies delivery service in Malaysia</strong>: pre-marinated frozen skewers, meatballs and fish cakes, shabu sliced meats, hotpot soup base, folding charcoal grills, portable gas cookers, charcoal, seasoning, sauces and disposable party supplies. Order via WhatsApp — local delivery across Klang Valley, frozen courier across West Malaysia to JB, Seremban, Penang, Kuantan and more.</p>
+      </div>
+      <h3 class="faq-h" data-i18n="h_faq">常见问题<span>FAQ</span></h3>
       <div class="faq">
         <details data-i18n="faq1"><summary>吉隆坡 / Klang Valley 哪里可以买烧烤食材送到家？</summary><p>在本页选好数量，按「去下单」用 WhatsApp 发单即可。Klang Valley 同城配送，满 RM 300 免运费。</p></details>
         <details data-i18n="faq2"><summary>外坡（JB、Seremban、Penang、Kuantan 等）可以送吗？</summary><p>可以，全西马都可以配送，满 RM 500 免运费。</p></details>
@@ -536,10 +555,15 @@
           <li>下单即代表同意以上条款。</li>
         </ol>
       </div>
-      <div class="sig"><b>BBQ NANNY</b><span>烧烤管家 · Everything Ready for Your BBQ.</span></div>
+      <div class="sig">
+        <img src="logo_sm.png" alt="" width="56" height="59" loading="lazy">
+        <b>BBQ NANNY 烧烤管家</b>
+        <span>Everything Ready for Your BBQ. 烧烤所需，一站准备。</span>
+        <a class="btn btn-wa foot-wa" id="footWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg><span>WhatsApp 018-256 0668</span></a>
+      </div>
       <div class="company">
         <b>ORIENTAL FOOD WHOLESALE SDN. BHD.</b> (1653595-A)<br>
-        57, Jalan 5/116B, Jalan Kuchai Lama, Kuchai Lama, 58200 Kuala Lumpur, W.P. Malaysia
+        57, Jalan 5/116B, Jalan Kuchai Lama, 58200 Kuala Lumpur, Malaysia
       </div>
     </div>
   </footer>
@@ -906,9 +930,9 @@
     note_soup: "Pair your BBQ with a pot of soup. Drop in balls and fish cakes — one pack serves 3–5.",
     note_season: "Skewers are already marinated; use the powder and sauces for extra aroma and heat mid-grill.",
     my_order: "My Order", subtotal: "Subtotal", subtotal2: "Subtotal",
-    sn1: "<b>Klang Valley</b>　Local delivery · Free above RM 300",
-    sn2: "<b>Outstation</b>　JB / Seremban / Penang etc. · Frozen courier · Free above RM 500",
-    sn3: "<b>Payment</b>　Bank transfer / e-wallet · Delivery fee confirmed by our team",
+    sn1: "🚚 Klang Valley delivery · Free above RM 300",
+    sn2: "📦 Outstation frozen courier · Free above RM 500",
+    sn3: "💳 Bank transfer / e-wallet · Delivery fee confirmed by us",
     checkout: "Checkout", confirm: "Confirm Order",
     l_name: "Name <i>*</i>", l_phone: "Phone <i>*</i>", l_ship: "Delivery <i>*</i>", l_addr: "Delivery address <i id=\"addrReq\">*</i>", l_date: "BBQ date", l_note: "Note",
     ph_name: "Your name", ph_addr: "House no., street, Taman, postcode, city", ph_note: "e.g. deliver before 4pm",
@@ -918,6 +942,7 @@
     hint: "The button below opens WhatsApp with your order already written — just tap send. Our team will confirm the delivery fee, timing and payment.",
     send: "Send Order via WhatsApp", back: "Back", wa_float: "Order / Ask on WhatsApp",
     h_about: "About BBQ NANNY<span class=\"en\">烧烤管家 · BBQ Supplies Delivery Malaysia</span>",
+    h_faq: "FAQ<span>常见问题</span>",
     faq1: "<summary>Where can I get BBQ food delivered in KL / Klang Valley?</summary><p>Pick your quantities on this page, tap Checkout and send the order via WhatsApp. Local delivery across Klang Valley, free above RM 300.</p>",
     faq2: "<summary>Do you deliver outstation (JB, Seremban, Penang, Kuantan)?</summary><p>Yes, we deliver across West Malaysia, free above RM 500.</p>",
     faq3: "<summary>Are the skewers marinated? How do I cook them?</summary><p>All skewers are pre-marinated, 20 sticks per pack. Keep frozen, thaw, then grill over medium heat until lightly charred. No extra seasoning needed.</p>",
@@ -1267,6 +1292,7 @@
     var hello = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_HELLO);
     document.getElementById("heroWa").href = hello;
     document.getElementById("waFloat").href = hello;
+    document.getElementById("footWa").href = hello;
 
     document.getElementById("checkoutBtn").addEventListener("click", openModal);
     document.getElementById("cartPill").addEventListener("click", openModal);

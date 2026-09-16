@@ -88,7 +88,6 @@
   .brand-name small { display: block; font-family: var(--f-body); font-weight: 500; font-size: 11px; letter-spacing: .18em; color: var(--ember); margin-top: 3px; }
   .lang-btn { margin-left: auto; margin-right: 8px; border: 1.5px solid var(--ember); background: #fff; color: var(--ember-deep); font-weight: 800; font-family: var(--f-latin); font-size: 12px; letter-spacing: .06em; padding: 6px 10px; border-radius: 999px; flex: none; }
   html[lang="en"] .only-cn { display: none; }
-  html[lang="en"] .fact b { font-size: 17px; }
   html[lang="en"] .btn-big { font-size: 17px; }
   html:not([lang="en"]) .only-en { display: none; }
   .cart-pill {
@@ -148,11 +147,6 @@
   .btn-ghost:hover { background: rgba(255,255,255,.24); }
   .btn-wa { background: var(--wa); color: #0B2A17; }
   .btn svg { width: 18px; height: 18px; flex: none; }
-  .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 26px auto 0; max-width: 420px; }
-  .fact { border: 1px solid rgba(255,255,255,.35); border-radius: 12px; padding: 12px 12px 10px; background: rgba(255,255,255,.14); }
-  .fact b { display: block; font-family: var(--f-latin); font-weight: 800; font-size: 20px; line-height: 1; color: #fff; }
-  .fact span { display: block; font-size: 12px; color: rgba(255,255,255,.88); margin-top: 6px; line-height: 1.35; }
-  @media (max-width: 420px) { .hero-facts { grid-template-columns: repeat(3, 1fr); gap: 6px; } .fact { padding: 10px 8px 8px; } .fact b { font-size: 17px; } .fact span { font-size: 11px; } }
 
 
   /* ---------- category nav ---------- */
@@ -389,11 +383,6 @@
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>
         <span data-i18n="cta_wa">WhatsApp 咨询</span>
       </a>
-    </div>
-    <div class="hero-facts">
-      <div class="fact" data-i18n="fact1"><b>已腌制</b><span>解冻即烤<br>免调味</span></div>
-      <div class="fact" data-i18n="fact2"><b>冷冻直送</b><span>巴生谷次日达<br>外坡 2–3 工作日</span></div>
-      <div class="fact" data-i18n="fact3"><b>免运费</b><span>巴生谷满 RM 300<br>外坡满 RM 500</span></div>
     </div>
   </div>
 </section>
@@ -827,9 +816,6 @@
   var EN = {
     lead: "Pre-marinated frozen skewers, grills, seasoning, sauces and disposable supplies — all in one order. Order via WhatsApp and we arrange delivery.",
     cta: "🔥 Order Now — Everything in One Go", cta_wa: "Chat on WhatsApp",
-    fact1: "<b>Marinated</b><span>Thaw &amp; grill<br>no seasoning</span>",
-    fact2: "<b>Frozen</b><span>KV next-day<br>Outstation 2–3 days</span>",
-    fact3: "<b>Free Ship</b><span>KV above RM 300<br>Outstation above RM 500</span>",
     ticker: "🚚 Free delivery: Klang Valley above RM 300 &nbsp;·&nbsp; Outstation above RM 500 &nbsp;·&nbsp; 🎉 Value Party Package for 15–20 pax only RM 1,288 &nbsp;·&nbsp; 🔥 Skewers pre-marinated, thaw &amp; grill &nbsp;·&nbsp; ",
     nav_pack: "🎉 Value Package", nav_skewers: "🍢 Frozen Skewers", nav_balls: "🍡 Balls &amp; Fish Cakes", nav_meat: "🥩 Sliced Meats", nav_soup: "🍲 Soup Base", nav_grill: "🔥 Grill &amp; Cooker", nav_season: "🧂 Seasoning &amp; Sauces", nav_supplies: "🧰 Supplies", nav_extras: "🌿 Extras",
     h_pack: "Value Party Package<span class=\"en\">超值多人配套</span>", h_skewers: "Frozen Skewers<span class=\"en\">冷冻烤串</span>", h_balls: "Balls &amp; Fish Cakes<span class=\"en\">丸子 &amp; 鱼饼</span>", h_meat: "Sliced Meats<span class=\"en\">涮肉片 / 烤肉片</span>", h_soup: "Hotpot Soup Base<span class=\"en\">火锅汤底</span>", h_grill: "Grill &amp; Cooker<span class=\"en\">烧烤架 &amp; 炉具</span>", h_season: "Seasoning &amp; Sauces<span class=\"en\">调味 &amp; 刷酱</span>", h_supplies: "Party Supplies<span class=\"en\">烧烤用品</span>", h_extras: "Extras<span class=\"en\">其他好物</span>",

@@ -199,6 +199,20 @@
   .stepper.on { border-color: var(--ember); background: var(--ember-soft); }
   @media (max-width: 380px) { .product { grid-template-columns: 78px 1fr; } .thumb { width: 78px; height: 78px; } }
 
+  /* package card */
+  .product.pk { border-color: var(--ember); background: linear-gradient(180deg, #FFF6EE, #fff 60%); }
+  .product.pk .p-desc { display: block !important; }
+  .pk-list { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-soft); }
+  .pk-list li { display: flex; justify-content: space-between; gap: 10px; }
+  .pk-list li b { color: var(--ink); font-weight: 500; }
+  .pk-list li span { white-space: nowrap; font-family: var(--f-latin); font-weight: 700; color: var(--ink); }
+  .pk-list li.gift b { color: var(--halal); }
+  .pk-list li.gift span { color: var(--halal); }
+  .pk-value { font-size: 12px; color: var(--ink-faint); margin-top: 6px; }
+  .pk-value s { margin-left: 4px; }
+  .pk-value em { font-style: normal; color: var(--halal); font-weight: 700; margin-left: 6px; }
+  @media (max-width: 520px) { .product.pk { grid-template-columns: 1fr; } .product.pk .thumb { width: 100%; height: 150px; border-radius: 12px; } }
+
   /* ---------- summary panel ---------- */
   .summary { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-top: 22px; }
   .summary h3 { margin: 0 0 8px; font-size: 16px; }
@@ -350,7 +364,8 @@
 
 <nav class="catnav" aria-label="分类">
   <div class="wrap">
-    <a href="#skewers" data-cat="skewers" data-i18n="nav_skewers" class="active">🍢 冷冻烤串</a>
+    <a href="#pack" data-cat="pack" data-i18n="nav_pack" class="active">🎉 团建配套</a>
+    <a href="#skewers" data-cat="skewers" data-i18n="nav_skewers">🍢 冷冻烤串</a>
     <a href="#balls" data-cat="balls" data-i18n="nav_balls">🍡 丸子 &amp; 鱼饼</a>
     <a href="#meat" data-cat="meat" data-i18n="nav_meat">🥩 涮肉片 / 烤肉片</a>
     <a href="#soup" data-cat="soup" data-i18n="nav_soup">🍲 汤底</a>
@@ -363,6 +378,16 @@
 
 <main>
 <noscript><section><h2>BBQ NANNY 烧烤管家 产品与价格 Product List</h2><h3>冷冻烤串 Frozen Skewers</h3><ul><li>鸡肉串 Chicken Skewer — 1 包 · 20 串 · 400g RM 29.50</li><li>羊肉串 Mutton Skewer — 1 包 · 20 串 · 400g RM 40.50</li><li>牛肉串 Beef Skewer — 1 包 · 20 串 · 400g RM 34.50</li><li>麻辣鸡肉串 Mala Chicken Skewer — 1 包 · 20 串 · 400g RM 32.50</li><li>麻辣牛肉串 Mala Beef Skewer — 1 包 · 20 串 · 400g RM 37.80</li><li>麻辣羊肉串 Mala Mutton Skewer — 1 包 · 20 串 · 400g RM 44.00</li><li>鸡胗串 Chicken Gizzard Skewer — 1 包 · 20 串 · 400g RM 23.50</li><li>鸡中翅串 Chicken Wing Skewer — 1 包 · 20 块中翅 RM 31.00</li><li>鱿鱼丁串 Squid Cube Skewer — 1 包 · 10 串 RM 44.00</li><li>小馒头 Mini Mantou — 1 包 · 12 粒 · 180g RM 6.00</li><li>棉花糖 Marshmallow — 1 包 · 65g RM 6.00</li></ul><h3>丸子 & 鱼饼 Balls & Fish Cakes</h3><ul><li>泰式鱼饼 Thai Fish Cake — 1 包 · 200g RM 8.00</li><li>蔬菜丸子 Mixed Vege Ball — 1 包 · 200g RM 8.00</li><li>鱼丸 Fish Ball — 1 包 · 200g RM 8.00</li><li>香菇丸子 Shiitake Ball — 1 包 · 200g RM 8.00</li><li>鱼豆腐 Tofu Fish Cake — 1 包 · 200g RM 8.00</li><li>包心鸡肉丸 Chicken Bao Xin Ball — 1 包 · 200g RM 9.00</li><li>潮汕牛肉丸子 Beef Ball — 1 包 · 200g RM 8.00</li><li>马来乌达鱼片 Otah Fish Cake — 1 包 · 200g RM 8.00</li><li>潮州鱼片 Teochew Fish Cake — 1 包 · 200g RM 8.00</li><li>鸡肉芝士丸子 Chicken Cheese Ball — 1 包 · 200g RM 9.00</li></ul><h3>涮肉片 / 烤肉片 Sliced Meats</h3><ul><li>牛肉片 Beef Slices — 1 盒 · 200g RM 18.00</li><li>羊肉片 Lamb Slices — 1 盒 · 200g RM 25.00</li><li>鸡肉片 Chicken Slices — 1 盒 · 200g RM 18.00</li></ul><h3>火锅汤底 Hotpot Soup Base</h3><ul><li>花胶鸡汤底 Pes Sup Ayam Emas — 1 包 · 200g RM 12.90</li><li>麻辣火锅底料 Pes Sup Sichuan Mala Pedas — 1 包 · 200g RM 8.90</li></ul><h3>烧烤架 & 炉具 Grill & Cooker</h3><ul><li>烧烤架 BBQ Grill Set — 1 套 RM 48.00</li><li>烧烤黑炭 BBQ Charcoal Briquette — 1 包 · 1kg RM 8.00</li><li>便携瓦斯炉套装 Portable Gas Cooker Set — 炉 1 个 + 气罐 1 罐（230g Butane Gas） RM 40.00；炉 1 个 + 气罐 4 罐（230g Butane Gas · 多 3 罐只加 RM 10，够烤一整晚） RM 50.00</li></ul><h3>调味 & 刷酱 Seasoning & Sauces</h3><ul><li>烧烤调味粉 BBQ Seasoning Powder — 1 套 · 原味 ×2 + 香辣 ×2（4 包 × 2g） RM 2.00</li><li>海天烧烤刷酱 Haitian BBQ Sauce — 原味（1 包 · 130g） RM 6.80；香辣（1 包 · 130g） RM 6.80</li><li>蒜蓉酱 Garlic Sauce — 原味蒜蓉酱（1 包 · 132g） RM 8.80；香辣蒜蓉酱（1 包 · 132g） RM 8.80</li></ul><h3>烧烤用品 Party Supplies</h3><ul><li>锡纸盒 Foil Tray (L) — 2 个（L size · 370 × 270 × 70 mm） RM 5.00</li><li>汤勺 + 漏勺 Ladle & Skimmer Set — 1 套 · 2 支（不锈钢） RM 5.00</li><li>一次性餐具 Disposable Tableware Set — 1 套 · 10 人用 RM 6.80</li><li>一次性鸳鸯锡纸锅（带盖） Disposable Foil Hotpot — 1 个 · 带盖（2.4L · 336 × 296 mm） RM 15.00</li><li>一次性烧烤用品大礼包 BBQ Tools Pack — 1 套 RM 30.00</li></ul><h3>其他好物 Extras</h3><ul><li>香茅驱蚊香薰 Citronella Repellent Candle — 1 粒（80g） RM 4.00；5 粒装（80g × 5 · 范围广，安心免受蚊虫干扰） RM 18.00</li></ul><p>WhatsApp +60 18-256 0668 下单。巴生谷次日送达，满 RM 300 免运；全马冷冻快递 2–3 天，满 RM 500 免运。</p></section></noscript>
+  <section class="section" id="pack">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="h_pack">团建配套<span class="en">Party Package</span></h2>
+      </div>
+      <p class="section-note" data-i18n="note_pack">公司团建、生日派对、家庭聚会，一套订齐 15–20 人的份量，还送烧烤用品。</p>
+      <div class="plist" id="list-pack"></div>
+    </div>
+  </section>
+
   <section class="section" id="skewers">
     <div class="wrap">
       <div class="section-head">
@@ -678,7 +703,45 @@
         ] }
     ]
   };
-  var ORDER = ["skewers", "balls", "meat", "soup", "grill", "season", "supplies", "extras"];
+  var ORDER = ["pack", "skewers", "balls", "meat", "soup", "grill", "season", "supplies", "extras"];
+  /* 团建配套：内容按现行单价自动计算；fixedPrice 填数字可锁定配套价 */
+  var PACKAGE = {
+    id: "pk01", cn: "团建配套 15–20 人", en: "Team Party Package (15–20 pax)", img: "pk01.jpg", tags: ["hot"], fixedPrice: 1288.00,
+    groups: [
+      { cn: "烤串 9 款各 2 包（18 包 · 340 串）", en: "9 skewer flavours × 2 packs (18 packs · 340 sticks)", items: [["sk01",0,2],["sk02",0,2],["sk03",0,2],["sk04",0,2],["sk05",0,2],["sk06",0,2],["sk07",0,2],["sk08",0,2],["sk09",0,2]] },
+      { cn: "丸子鱼饼 10 款各 2 包（20 包 · 4kg）", en: "10 balls & fish cakes × 2 packs (20 packs · 4kg)", items: [["bl01",0,2],["bl02",0,2],["bl03",0,2],["bl04",0,2],["bl05",0,2],["bl07",0,2],["bl08",0,2],["bl09",0,2],["bl10",0,2],["bl11",0,2]] },
+      { cn: "小馒头 ×3、棉花糖 ×3", en: "Mini mantou ×3, marshmallows ×3", items: [["sk10",0,3],["sk11",0,3]] },
+      { cn: "烤架 ×2、黑炭 5kg、大礼包 ×2", en: "Grill ×2, charcoal 5kg, tools pack ×2", items: [["gr01",0,2],["gr04",0,5],["su01",0,2]] },
+      { cn: "火锅角落：牛肉片 ×3、鸡肉片 ×3、花胶鸡汤底 ×2、麻辣底料 ×1", en: "Hotpot corner: beef slices ×3, chicken slices ×3, fish maw soup base ×2, mala base ×1", items: [["mt01",0,3],["mt03",0,3],["sp01",0,2],["sp02",0,1]] },
+      { cn: "卡式炉套装（炉 + 4 罐气）、锡纸锅 ×2、锡纸盒 ×2、调味粉 ×5、蒜蓉酱 ×2、蜡烛 5 粒装", en: "Gas cooker set (cooker + 4 cans), foil hotpot ×2, foil tray ×2, seasoning ×5, garlic sauce ×2, candle 5-pack", items: [["gr02",1,1],["su04",0,2],["su03",0,2],["se01",0,5],["se03",0,2],["ex01",1,1]] }
+    ],
+    gifts: { cn: "", en: "", items: [] }
+  };
+  function findProduct(id) { var r = null; Object.keys(CATALOG).forEach(function (c) { CATALOG[c].forEach(function (p) { if (p.id === id) r = p; }); }); return r; }
+  function sumItems(items) {
+    /* 单买价值：同款凑够数量时按 bundle 优惠价算，跟单独下单一致 */
+    var byProd = {}; var order = [];
+    items.forEach(function (it) { if (!byProd[it[0]]) { byProd[it[0]] = []; order.push(it[0]); } byProd[it[0]].push(it); });
+    var t = 0;
+    order.forEach(function (id) {
+      var p = findProduct(id); if (!p) return;
+      var packs = 0, amt = 0, unit = 0;
+      byProd[id].forEach(function (it) { packs += it[2]; amt += p.rows[it[1]].price * it[2]; unit = p.rows[it[1]].price; });
+      if (p.bundle && packs >= p.bundle.n) { var g = Math.floor(packs / p.bundle.n); amt -= g * (p.bundle.n * unit - p.bundle.price); }
+      t += amt;
+    });
+    return t;
+  }
+  function buildPackage() {
+    var paid = 0; PACKAGE.groups.forEach(function (g) { g.total = sumItems(g.items); paid += g.total; });
+    PACKAGE.giftValue = sumItems(PACKAGE.gifts.items);
+    PACKAGE.paid = paid; PACKAGE.value = paid + PACKAGE.giftValue;
+    PACKAGE.price = PACKAGE.fixedPrice !== null ? PACKAGE.fixedPrice : paid;
+    PACKAGE.desc = "适合 15–20 人：烤串、丸子鱼饼、肉片汤底、烤架、卡式炉、黑炭到用品一次配齐，拆开来买要 " + money(PACKAGE.value) + "。";
+    PACKAGE.rows = [{ spec: "1 套 · 15–20 人", price: PACKAGE.price }];
+    CATALOG.pack = [PACKAGE];
+  }
+  buildPackage();
 
   /* ============ 双语 CN / EN ============ */
   var lang = "cn";
@@ -689,8 +752,9 @@
     fact1: "<b>Marinated</b><span>Thaw &amp; grill<br>no seasoning</span>",
     fact2: "<b>Frozen</b><span>KV next-day<br>Outstation 2–3 days</span>",
     fact3: "<b>Free Ship</b><span>KV above RM 300<br>Outstation above RM 500</span>",
-    nav_skewers: "🍢 Frozen Skewers", nav_balls: "🍡 Balls &amp; Fish Cakes", nav_meat: "🥩 Sliced Meats", nav_soup: "🍲 Soup Base", nav_grill: "🔥 Grill &amp; Cooker", nav_season: "🧂 Seasoning &amp; Sauces", nav_supplies: "🧰 Supplies", nav_extras: "🌿 Extras",
-    h_skewers: "Frozen Skewers<span class=\"en\">冷冻烤串</span>", h_balls: "Balls &amp; Fish Cakes<span class=\"en\">丸子 &amp; 鱼饼</span>", h_meat: "Sliced Meats<span class=\"en\">涮肉片 / 烤肉片</span>", h_soup: "Hotpot Soup Base<span class=\"en\">火锅汤底</span>", h_grill: "Grill &amp; Cooker<span class=\"en\">烧烤架 &amp; 炉具</span>", h_season: "Seasoning &amp; Sauces<span class=\"en\">调味 &amp; 刷酱</span>", h_supplies: "Party Supplies<span class=\"en\">烧烤用品</span>", h_extras: "Extras<span class=\"en\">其他好物</span>",
+    nav_pack: "🎉 Party Package", nav_skewers: "🍢 Frozen Skewers", nav_balls: "🍡 Balls &amp; Fish Cakes", nav_meat: "🥩 Sliced Meats", nav_soup: "🍲 Soup Base", nav_grill: "🔥 Grill &amp; Cooker", nav_season: "🧂 Seasoning &amp; Sauces", nav_supplies: "🧰 Supplies", nav_extras: "🌿 Extras",
+    h_pack: "Party Package<span class=\"en\">团建配套</span>", h_skewers: "Frozen Skewers<span class=\"en\">冷冻烤串</span>", h_balls: "Balls &amp; Fish Cakes<span class=\"en\">丸子 &amp; 鱼饼</span>", h_meat: "Sliced Meats<span class=\"en\">涮肉片 / 烤肉片</span>", h_soup: "Hotpot Soup Base<span class=\"en\">火锅汤底</span>", h_grill: "Grill &amp; Cooker<span class=\"en\">烧烤架 &amp; 炉具</span>", h_season: "Seasoning &amp; Sauces<span class=\"en\">调味 &amp; 刷酱</span>", h_supplies: "Party Supplies<span class=\"en\">烧烤用品</span>", h_extras: "Extras<span class=\"en\">其他好物</span>",
+    note_pack: "Company team-building, birthdays or family gatherings — one set covers 15–20 people, with free BBQ supplies included.",
     note_skewers: "Keep frozen. Thaw before grilling and cook over medium heat until lightly charred.",
     note_balls: "Great on the grill or in hotpot. Skewer them or drop straight into the pot — kids love these.",
     note_meat: "Thinly sliced frozen meats for hotpot or the grill plate. Buy 3 boxes of the same item for a bundle price, applied automatically.",
@@ -737,7 +801,7 @@
     "2 个": "2 pcs", "L size · 370 × 270 × 70 mm": "L size · 370 × 270 × 70 mm", "1 套 · 2 支": "1 set · 2 pcs", "不锈钢": "Stainless steel",
     "1 套 · 10 人用": "1 set · serves 10", "1 个 · 带盖": "1 pc · with lid", "2.4L · 336 × 296 mm": "2.4L · 336 × 296 mm",
     "1 粒": "1 pc", "80g": "80g", "5 粒装": "Pack of 5", "80g × 5 · 范围广，安心免受蚊虫干扰": "80g × 5 · wide coverage, keep mosquitoes away",
-    "1 包 · 1kg": "1 pack · 1kg"
+    "1 包 · 1kg": "1 pack · 1kg", "1 套 · 15–20 人": "1 set · 15–20 pax"
   };
   var DESC_EN = {
     sk01: "Cumin-scented chicken thigh skewers, tender and juicy — loved by kids and adults.", sk02: "Xinjiang-style mutton with the right fat ratio — best over charcoal.", sk03: "Well-marinated beef cubes, one bite each.",
@@ -754,6 +818,7 @@
     se01: "Individual sachets — sprinkle mid-grill for instant aroma.", se02: "Haitian BBQ sauce in a 130g squeeze pack — brush while grilling. Any 2 packs for RM 10, applied automatically.", se03: "Semi-solid garlic sauce in a 132g squeeze pack — great on squid, wings and vegetables. Any 2 packs for RM 15, applied automatically.",
     su03: "L size, for cooked skewers or to catch drips under the grill.", su05: "Stainless-steel ladle and skimmer — scoop and strain in one set.", su02: "Thick disposable bowls, plates and chopsticks.",
     su04: "Food-grade foil yin-yang hotpot 2.4L with foil lid — heat directly on a gas cooker, then throw away. No washing.", su01: "All in one: tongs ×1, charcoal tongs ×1, oil brushes ×2, stainless skewers, bamboo skewers, seasoning shakers ×2. Use and toss — no washing.",
+    pk01: "For 15–20 people: skewers, balls & fish cakes, sliced meats and soup base, grills, gas cooker, charcoal and supplies — all in one set.",
     ex01: "Plant-oil citronella candle — light one outdoors for gentle mosquito protection."
   };
   function T(k) { return lang === "en" && EN[k] !== undefined ? EN[k] : null; }
@@ -797,7 +862,7 @@
     ORDER.forEach(function (cat) {
       var html = "";
       CATALOG[cat].forEach(function (p) {
-        html += '<article class="product" id="p-' + p.id + '">';
+        html += '<article class="product' + (p.groups ? ' pk' : '') + '" id="p-' + p.id + '">';
         if (p.img) html += '<div class="thumb"><img src="' + p.img + '" alt="' + esc(p.cn) + '" loading="lazy" width="96" height="96"></div>';
         else html += '<div class="thumb"><div class="glyph">' + p.glyph + '</div></div>';
         html += '<div class="p-body">';
@@ -807,6 +872,13 @@
         (p.tags || []).forEach(function (t) { var lbl = (t === "deal" && p.bundle) ? (lang === "en" ? fmt(EN.deal, { n: p.bundle.n, p: p.bundle.price.toFixed(0) }) : "💰 " + p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(0)) : (lang === "en" ? (EN[t] || TAG_LABEL[t]) : TAG_LABEL[t]); badges += '<span class="badge ' + t + '">' + lbl + '</span>'; });
         if (badges) html += '<div class="badges">' + badges + '</div>';
         html += '<div class="p-desc">' + esc(lang === "en" ? (DESC_EN[p.id] || p.desc) : p.desc) + '</div>';
+        if (p.groups) {
+          html += '<ul class="pk-list">';
+          p.groups.forEach(function (g) { html += '<li><b>' + esc(lang === "en" ? g.en : g.cn) + '</b><span>' + money(g.total) + '</span></li>'; });
+          if (p.gifts.items.length) html += '<li class="gift"><b>' + esc(lang === "en" ? p.gifts.en : p.gifts.cn) + '</b><span>' + (lang === "en" ? "FREE" : "免费") + '</span></li>';
+          html += '</ul>';
+          html += '<div class="pk-value">' + (lang === "en" ? "Bought separately" : "单买价值") + '<s>' + money(p.value) + '</s><em>' + (lang === "en" ? "save " : "省 ") + money(p.value - p.price) + '</em></div>';
+        }
         html += '<div class="rows">';
         p.rows.forEach(function (r, i) {
           var k = key(p.id, i);

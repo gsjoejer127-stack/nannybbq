@@ -415,7 +415,7 @@
       <div class="sum-lines" id="sumLines"><div class="sum-empty">还没选东西，从上面按 + 开始。</div></div>
       <div class="sum-total"><span class="t">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
       <div class="ship-hint" id="shipHint"></div>
-      <div class="sum-note"><b>配送方式</b><br>巴生谷 Klang Valley：自取 / Lalamove / 冷冻快递（次日送达）· 满 RM 300 免运费<br>外坡 Non-Klang Valley：冷冻快递（2–3 个工作日）· 满 RM 500 免运费<br>未满免运额的运费由客服按地址回复；付款方式：银行转账 / 电子钱包。</div>
+      <div class="sum-note"><b>配送方式</b><br>巴生谷 Klang Valley：同城配送（次日送达）· 满 RM 300 免运费<br>外坡 Outstation（JB / Seremban / Penang / Kuantan / Pahang 等）：冷冻快递（2–3 个工作日）· 满 RM 500 免运费<br>未满免运额的运费由客服按地址回复；付款方式：银行转账 / 电子钱包。</div>
     </div>
   </section>
 
@@ -464,10 +464,8 @@
       <div class="field">
         <label>配送方式 <i>*</i></label>
         <div class="choice" id="fShip" role="radiogroup" aria-label="配送方式">
-          <label><input type="radio" name="ship" value="巴生谷 · 自取 Self Pickup"><span><b>自取 Self Pickup</b><small>巴生谷 Klang Valley</small></span></label>
-          <label><input type="radio" name="ship" value="巴生谷 · Lalamove"><span><b>Lalamove</b><small>巴生谷 Klang Valley</small></span></label>
-          <label><input type="radio" name="ship" value="巴生谷 · 冷冻快递（次日送达）"><span><b>冷冻快递 · 次日送达</b><small>巴生谷 Klang Valley</small></span></label>
-          <label><input type="radio" name="ship" value="外坡 · 冷冻快递（2–3 个工作日）"><span><b>冷冻快递 · 2–3 个工作日</b><small>外坡 Non-Klang Valley</small></span></label>
+          <label><input type="radio" name="ship" value="巴生谷 Klang Valley · 同城配送（次日送达）"><span><b>同城配送 · 次日送达</b><small>巴生谷 Klang Valley</small></span></label>
+          <label><input type="radio" name="ship" value="外坡 Outstation · 冷冻快递（2–3 个工作日）"><span><b>冷冻快递 · 2–3 个工作日</b><small>外坡 Outstation：JB、Seremban、Penang、Kuantan、Pahang 等</small></span></label>
         </div>
       </div>
       <div class="field"><label for="fAddr">送货地址 <i id="addrReq">*</i></label><textarea id="fAddr" autocomplete="street-address" placeholder="门牌、街道、Taman、邮编、城市"></textarea></div>
@@ -610,9 +608,12 @@
         rows: [{ spec: "1 套", price: 30.00 }] }
     ],
     extras: [
-      { id: "ex01", cn: "香茅驱蚊香薰", en: "Citronella Repellent Candle", img: "ex01.jpg", tags: ["deal"], bundle: { n: 5, price: 18.00, unit: "粒" },
-        desc: "植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊，孕婴可用。5 粒 RM 18，下单自动折算。",
-        rows: [{ spec: "1 粒 · 80g", price: 4.00 }] }
+      { id: "ex01", cn: "香茅驱蚊香薰", en: "Citronella Repellent Candle", img: "ex01.jpg", tags: [],
+        desc: "植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊，孕婴可用。",
+        rows: [
+          { spec: "1 粒", sub: "80g", price: 4.00 },
+          { spec: "5 粒装", sub: "80g × 5 · 更划算", price: 18.00 }
+        ] }
     ]
   };
   var ORDER = ["skewers", "balls", "meat", "soup", "grill", "season", "supplies", "extras"];

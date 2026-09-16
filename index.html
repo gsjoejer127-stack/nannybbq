@@ -200,19 +200,18 @@
   @media (max-width: 380px) { .product { grid-template-columns: 78px 1fr; } .thumb { width: 78px; height: 78px; } }
 
   /* package card */
-  .product.pk { border-color: var(--ember); background: linear-gradient(180deg, #FFF6EE, #fff 60%); }
-  .product.pk .p-desc { display: block !important; }
-  .pk-list { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-soft); }
-  .pk-list li { display: flex; justify-content: space-between; gap: 10px; }
-  .pk-list li b { color: var(--ink); font-weight: 500; }
-  .pk-list li span { white-space: nowrap; font-family: var(--f-latin); font-weight: 700; color: var(--ink); }
-  .pk-list li.gift b { color: var(--halal); }
-  .pk-list li.gift span { color: var(--halal); }
-  .pk-value { font-size: 12px; color: var(--ink-faint); margin-top: 6px; }
-  .pk-value s { margin-left: 4px; }
-  .pk-value em { font-style: normal; color: var(--halal); font-weight: 700; margin-left: 6px; }
-  @media (max-width: 520px) { .product.pk { grid-template-columns: 1fr; } .product.pk .thumb { width: 100%; height: 150px; border-radius: 12px; } }
-
+  .product.pk { display: block; border: 2px solid var(--ember); background: #fff; padding: 16px; }
+  .pk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+  .pk-title { font-family: var(--f-cn-display); font-size: 22px; letter-spacing: .03em; line-height: 1.15; color: var(--ink); }
+  html[lang="en"] .pk-title { font-family: var(--f-latin); font-weight: 800; font-size: 19px; letter-spacing: -.01em; }
+  .pk-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
+  .product.pk .pk-list { margin: 0; padding: 12px; list-style: none; display: grid; gap: 7px; background: var(--surface-2); border-radius: 12px; font-size: 13.5px; color: var(--ink); }
+  .product.pk .pk-list li { display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+  .product.pk .pk-list .ic { flex: none; width: 20px; text-align: center; }
+  .pk-price { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+  .pk-big { font-family: var(--f-latin); font-weight: 800; font-size: 28px; color: var(--ember-deep); line-height: 1; }
+  .pk-value { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+  .pk-price .row { background: transparent; padding: 0; display: block; }
   /* ---------- summary panel ---------- */
   .summary { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin-top: 22px; }
   .summary h3 { margin: 0 0 8px; font-size: 16px; }
@@ -715,7 +714,17 @@
       { cn: "火锅角落：牛肉片 ×3、鸡肉片 ×3、花胶鸡汤底 ×2、麻辣底料 ×1", en: "Hotpot corner: beef slices ×3, chicken slices ×3, fish maw soup base ×2, mala base ×1", items: [["mt01",0,3],["mt03",0,3],["sp01",0,2],["sp02",0,1]] },
       { cn: "卡式炉套装（炉 + 4 罐气）、锡纸锅 ×2、锡纸盒 ×2、调味粉 ×5、蒜蓉酱 ×2、蜡烛 5 粒装", en: "Gas cooker set (cooker + 4 cans), foil hotpot ×2, foil tray ×2, seasoning ×5, garlic sauce ×2, candle 5-pack", items: [["gr02",1,1],["su04",0,2],["su03",0,2],["se01",0,5],["se03",0,2],["ex01",1,1]] }
     ],
-    gifts: { cn: "", en: "", items: [] }
+    gifts: { cn: "", en: "", items: [] },
+    lines: [
+      ["🍢", "烤串 9 款各 2 包 · 340 串", "9 skewer flavours × 2 packs · 340 sticks"],
+      ["🍡", "丸子鱼饼 10 款各 2 包 · 4kg", "10 balls & fish cakes × 2 packs · 4kg"],
+      ["🥩", "牛肉片 ×3、鸡肉片 ×3", "Beef slices ×3, chicken slices ×3"],
+      ["🍲", "花胶鸡汤底 ×2、麻辣底料 ×1", "Fish maw soup base ×2, mala base ×1"],
+      ["🍞", "小馒头 ×3、棉花糖 ×3", "Mini mantou ×3, marshmallows ×3"],
+      ["🔥", "烤架 ×2、黑炭 5kg、卡式炉套装（4 罐气）", "Grill ×2, charcoal 5kg, gas cooker set (4 cans)"],
+      ["🧰", "大礼包 ×2、锡纸锅 ×2、锡纸盒 ×2", "Tools pack ×2, foil hotpot ×2, foil tray ×2"],
+      ["🧂", "调味粉 ×5、蒜蓉酱 ×2、蜡烛 5 粒装", "Seasoning ×5, garlic sauce ×2, candle 5-pack"]
+    ]
   };
   function findProduct(id) { var r = null; Object.keys(CATALOG).forEach(function (c) { CATALOG[c].forEach(function (p) { if (p.id === id) r = p; }); }); return r; }
   function sumItems(items) {
@@ -862,7 +871,20 @@
     ORDER.forEach(function (cat) {
       var html = "";
       CATALOG[cat].forEach(function (p) {
-        html += '<article class="product' + (p.groups ? ' pk' : '') + '" id="p-' + p.id + '">';
+        if (p.groups) {
+          var en = lang === "en";
+          html += '<article class="product pk" id="p-' + p.id + '">';
+          html += '<div class="pk-head"><div><div class="pk-title">' + esc(en ? p.en : p.cn) + '</div><div class="pk-sub">' + (en ? "Everything for 15–20 people in one order" : "15–20 人份，一次订齐，省心省力") + '</div></div><span class="badge hot">' + (en ? "🔥 Popular" : "🔥 人气") + '</span></div>';
+          html += '<ul class="pk-list">';
+          p.lines.forEach(function (l) { html += '<li><span class="ic">' + l[0] + '</span><span>' + esc(en ? l[2] : l[1]) + '</span></li>'; });
+          html += '</ul>';
+          html += '<div class="pk-price"><div><div class="pk-big">' + money(p.price) + '</div><div class="pk-value">' + (en ? "Bought separately " : "单买价值 ") + '<s>' + money(p.value) + '</s></div></div>';
+          var kk = key(p.id, 0), nn = qty[kk] || 0;
+          html += '<div class="row" data-key="' + kk + '" data-price="' + p.price + '"><div class="stepper' + (nn > 0 ? " on" : "") + '"><button type="button" class="dec" aria-label="减少">−</button><input type="number" class="q" min="0" max="999" inputmode="numeric" value="' + nn + '" aria-label="' + esc(p.cn) + ' 数量"><button type="button" class="inc" aria-label="增加">+</button></div></div></div>';
+          html += '</article>';
+          return;
+        }
+        html += '<article class="product" id="p-' + p.id + '">';
         if (p.img) html += '<div class="thumb"><img src="' + p.img + '" alt="' + esc(p.cn) + '" loading="lazy" width="96" height="96"></div>';
         else html += '<div class="thumb"><div class="glyph">' + p.glyph + '</div></div>';
         html += '<div class="p-body">';
@@ -872,13 +894,6 @@
         (p.tags || []).forEach(function (t) { var lbl = (t === "deal" && p.bundle) ? (lang === "en" ? fmt(EN.deal, { n: p.bundle.n, p: p.bundle.price.toFixed(0) }) : "💰 " + p.bundle.n + " " + p.bundle.unit + " RM " + p.bundle.price.toFixed(0)) : (lang === "en" ? (EN[t] || TAG_LABEL[t]) : TAG_LABEL[t]); badges += '<span class="badge ' + t + '">' + lbl + '</span>'; });
         if (badges) html += '<div class="badges">' + badges + '</div>';
         html += '<div class="p-desc">' + esc(lang === "en" ? (DESC_EN[p.id] || p.desc) : p.desc) + '</div>';
-        if (p.groups) {
-          html += '<ul class="pk-list">';
-          p.groups.forEach(function (g) { html += '<li><b>' + esc(lang === "en" ? g.en : g.cn) + '</b><span>' + money(g.total) + '</span></li>'; });
-          if (p.gifts.items.length) html += '<li class="gift"><b>' + esc(lang === "en" ? p.gifts.en : p.gifts.cn) + '</b><span>' + (lang === "en" ? "FREE" : "免费") + '</span></li>';
-          html += '</ul>';
-          html += '<div class="pk-value">' + (lang === "en" ? "Bought separately" : "单买价值") + '<s>' + money(p.value) + '</s><em>' + (lang === "en" ? "save " : "省 ") + money(p.value - p.price) + '</em></div>';
-        }
         html += '<div class="rows">';
         p.rows.forEach(function (r, i) {
           var k = key(p.id, i);

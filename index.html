@@ -199,7 +199,9 @@
   .sum-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed var(--line); margin-top: 12px; padding-top: 12px; }
   .sum-total .t { font-weight: 700; }
   .sum-total .v { font-family: var(--f-latin); font-weight: 800; font-size: 26px; color: var(--ember-deep); }
-  .sum-note { font-size: 12px; color: var(--ink-faint); margin-top: 8px; line-height: 1.5; }
+  .sum-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; display: grid; gap: 10px; }
+  .sum-note p { margin: 0; padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+  .sum-note p b { color: var(--ink); }
   .ship-hint { margin-top: 12px; background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--ink-soft); }
   .ship-hint b { color: var(--ember-deep); }
   .ship-hint.free { background: var(--halal-soft); color: var(--halal); }
@@ -210,6 +212,8 @@
   /* ---------- footer ---------- */
   .footer { padding-block: 26px 10px; color: var(--ink-soft); font-size: 12.5px; }
   .footer .disclaimer { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; line-height: 1.6; }
+  .footer .disclaimer b { display: block; color: var(--ink); margin-bottom: 4px; }
+  .footer .disclaimer ol { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
   .footer .sig { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
   .footer .sig b { font-family: var(--f-latin); font-weight: 800; color: var(--ember-deep); }
   .footer .company { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--ink-faint); line-height: 1.6; }
@@ -415,15 +419,25 @@
       <div class="sum-lines" id="sumLines"><div class="sum-empty">还没选东西，从上面按 + 开始。</div></div>
       <div class="sum-total"><span class="t">货品合计</span><span class="v" id="sumTotal">RM 0.00</span></div>
       <div class="ship-hint" id="shipHint"></div>
-      <div class="sum-note"><b>配送方式</b><br>巴生谷 Klang Valley：同城配送（次日送达）· 满 RM 300 免运费<br>外坡 Outstation（JB / Seremban / Penang / Kuantan / Pahang 等）：冷冻快递（2–3 个工作日）· 满 RM 500 免运费<br>未满免运额的运费由客服按地址回复；付款方式：银行转账 / 电子钱包。</div>
+      <div class="sum-note">
+        <p><b>巴生谷</b>　次日送达 · 满 RM 300 免运</p>
+        <p><b>外坡</b>　JB / Seremban / Penang 等 · 2–3 天送达 · 满 RM 500 免运</p>
+        <p><b>付款</b>　银行转账 / 电子钱包 · 运费由客服确认</p>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="wrap">
       <div class="disclaimer">
-        图片仅供参考。冷冻产品请收货后立即冷冻。<br>
-        Images for reference only. Keep frozen upon receipt.
+        <b>免责声明 Disclaimer</b>
+        <ol>
+          <li>图片仅供参考，产品以实物为准。</li>
+          <li>冷冻产品请收货后立即冷冻保存；因收货后未及时冷冻或储存不当造成的变质，本店恕不负责。</li>
+          <li>烧烤架、炭火、卡式炉及气罐请按说明在通风处使用，远离儿童与易燃物；使用不当造成的任何损失，本店不承担责任。</li>
+          <li>价格与库存如有变动，以客服确认为准；订单一经确认付款，恕不接受退换。</li>
+          <li>下单即表示您已阅读并同意以上条款。</li>
+        </ol>
       </div>
       <div class="sig"><b>BBQ NANNY</b><span>烧烤管家 · Everything Ready for Your BBQ.</span></div>
       <div class="company">
@@ -612,7 +626,7 @@
     ],
     extras: [
       { id: "ex01", cn: "香茅驱蚊香薰", en: "Citronella Repellent Candle", img: "ex01.jpg", tags: [],
-        desc: "植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊，孕婴可用。",
+        desc: "植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊。",
         rows: [
           { spec: "1 粒", sub: "80g", price: 4.00 },
           { spec: "5 粒装", sub: "80g × 5 · 更划算", price: 18.00 }

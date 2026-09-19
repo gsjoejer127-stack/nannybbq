@@ -1,0 +1,27 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: S,Noto Sans CJK SC,78,&H00FFFFFF,&H00FFFFFF,&H00100B09,&HB4000000,-1,0,0,0,100,100,3,0,1,7,4,2,60,60,262,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 0,0:00:00.00,0:00:01.72,S,,0,0,0,,朋友突然说要来我家
+Dialogue: 0,0:00:01.72,0:00:03.45,S,,0,0,0,,最怕的不是没位子坐
+Dialogue: 0,0:00:03.45,0:00:04.98,S,,0,0,0,,是不知道要吃什么
+Dialogue: 0,0:00:04.98,0:00:08.05,S,,0,0,0,,还好我冰箱，长期都放着这个
+Dialogue: 0,0:00:08.05,0:00:09.58,S,,0,0,0,,不用腌、不用切
+Dialogue: 0,0:00:09.58,0:00:11.85,S,,0,0,0,,不用准备一大堆材料
+Dialogue: 0,0:00:11.88,0:00:13.68,S,,0,0,0,,拿出来，直接烤
+Dialogue: 0,0:00:14.24,0:00:15.71,S,,0,0,0,,大家围着烤炉
+Dialogue: 0,0:00:15.71,0:00:17.18,S,,0,0,0,,一边烤一边聊
+Dialogue: 0,0:00:17.18,0:00:18.90,S,,0,0,0,,这样才叫聚会嘛
+Dialogue: 0,0:00:19.46,0:00:21.55,S,,0,0,0,,喜欢吃什么，就烤什么
+Dialogue: 0,0:00:21.55,0:00:22.94,S,,0,0,0,,要多少，烤多少
+Dialogue: 0,0:00:22.94,0:00:24.16,S,,0,0,0,,冰箱放几包
+Dialogue: 0,0:00:24.16,0:00:26.10,S,,0,0,0,,朋友来了，随时开烤

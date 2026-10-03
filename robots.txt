@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /pos/
 
 Sitemap: https://bbqnanny.com/sitemap.xml

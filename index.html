@@ -661,6 +661,7 @@
   /* ============ 可改配置 ============ */
   var WHATSAPP_NUMBER = "60182560668";                      // 接单号码（国际格式，不带 +）
   var WHATSAPP_HELLO = "Hi BBQ NANNY，我想问一下烧烤套餐 😊";
+  var NOTIFY_URL = "";                                      // 订单通知：Google Apps Script 网页应用网址（留空 = 不发通知）
   var FREE_KV = 300;   // Klang Valley 满额免运
   var FREE_OUT = 500;  // 外坡满额免运
 
@@ -1247,6 +1248,60 @@
     return ok;
   }
 
+  /* ── 订单通知：在跳转 WhatsApp 前静默上报一份，捕捉没按发送的顾客 ── */
+  var lastNotified = "";
+
+  function orderPayload() {
+    var o = orderLines();
+    var items = [];
+    allProducts().forEach(function (p) {
+      var parts = [], packs = 0, amt = 0, unit = 0;
+      p.rows.forEach(function (r, idx) {
+        var n = qty[key(p.id, idx)] || 0;
+        if (n > 0 && r.price !== null) {
+          packs += n; amt += n * r.price; unit = r.price;
+          parts.push((p.rows.length > 1 ? r.spec + " " : "") + "\u00d7" + n);
+        }
+      });
+      if (!packs) return;
+      if (p.bundle && packs >= p.bundle.n) {
+        var groups = Math.floor(packs / p.bundle.n);
+        var disc = groups * (p.bundle.n * unit - p.bundle.price);
+        if (disc > 0) amt -= disc;
+      }
+      items.push(p.cn + " " + parts.join("\u3001") + " \u2014 " + money(amt));
+    });
+    var ship = document.querySelector('input[name="ship"]:checked');
+    return {
+      name: val("fName"), phone: val("fPhone"),
+      ship: ship ? ship.value : "", addr: val("fAddr"),
+      date: val("fDate"), note: val("fNote"),
+      total: o.total.toFixed(2), count: o.count,
+      items: items.join("\n"), lang: lang, text: buildMessage()
+    };
+  }
+
+  function notifyOrder() {
+    if (!NOTIFY_URL) return;
+    try {
+      var body = JSON.stringify(orderPayload());
+      if (body === lastNotified) return;   // 同一单重复点击不重发
+      lastNotified = body;
+      var sent = false;
+      if (navigator.sendBeacon) {
+        try {
+          sent = navigator.sendBeacon(NOTIFY_URL, new Blob([body], { type: "text/plain;charset=utf-8" }));
+        } catch (e) {}
+      }
+      if (!sent && window.fetch) {
+        fetch(NOTIFY_URL, {
+          method: "POST", mode: "no-cors", keepalive: true,
+          headers: { "Content-Type": "text/plain;charset=utf-8" }, body: body
+        })["catch"](function () {});
+      }
+    } catch (e) {}   // 通知失败绝不影响顾客下单
+  }
+
   function buildMessage() {
     var o = orderLines();
     var st = shipStatus();
@@ -1347,6 +1402,7 @@
 
     document.getElementById("sendWa").addEventListener("click", function () {
       if (!validate()) return;
+      notifyOrder();
       var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildMessage());
       var a = document.createElement("a");
       a.href = url; a.target = "_blank"; a.rel = "noopener";

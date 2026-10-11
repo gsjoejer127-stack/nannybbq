@@ -1,0 +1,51 @@
+﻿Handle,SKU,Name,Category,Description,Sold by weight,Option 1 name,Option 1 value,Option 2 name,Option 2 value,Option 3 name,Option 3 value,Default price,Cost,Barcode,SKU of included item,Quantity of included item,Track stock
+sk01,sk01,鸡肉串 Chicken Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。孜然香气，鸡腿肉嫩，大人小孩都爱。 [Halal],N,,,,,,,29.50,,,,,N
+sk02,sk02,羊肉串 Mutton Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。新疆风味，肥瘦相间，炭烤最香。 [Halal],N,,,,,,,40.50,,,,,N
+sk03,sk03,牛肉串 Beef Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。精选牛肉粒，腌足味，一口一块。 [Halal],N,,,,,,,34.50,,,,,N
+sk04,sk04,麻辣鸡肉串 Mala Chicken Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。麻辣腌制，越烤越香，配冰饮绝配。 [Halal],N,,,,,,,32.50,,,,,N
+sk05,sk05,麻辣牛肉串 Mala Beef Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。花椒辣椒双重香，肉汁锁住。 [Halal],N,,,,,,,37.80,,,,,N
+sk06,sk06,麻辣羊肉串 Mala Mutton Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。麻辣配羊肉，重口味首选。 [Halal],N,,,,,,,44.00,,,,,N
+sk07,sk07,鸡胗串 Chicken Gizzard Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 串 · 400g。爽脆有嚼劲，越嚼越香。,N,,,,,,,23.50,,,,,N
+sk08,sk08,鸡中翅串 Chicken Wing Skewer,冷冻烤串 Frozen Skewers,1 包 · 20 块中翅。蒜香腌制，外焦里嫩，烧烤必点。,N,,,,,,,31.00,,,,,N
+sk09,sk09,鱿鱼丁串 Squid Cube Skewer,冷冻烤串 Frozen Skewers,1 包 · 10 串。鱿鱼丁弹牙，刷酱后烤更惹味。,N,,,,,,,44.00,,,,,N
+sk10,sk10,小馒头 Mini Mantou,冷冻烤串 Frozen Skewers,1 包 · 12 粒 · 180g。原味小馒头，烤到外皮金黄酥脆。,N,,,,,,,6.00,,,,,N
+sk11,sk11,棉花糖 Marshmallow,冷冻烤串 Frozen Skewers,1 包 · 65g。香草味棉花糖，串起来烤到微焦，外脆内软拉丝，小孩最爱。,N,,,,,,,6.00,,,,,N
+bl01,bl01,泰式鱼饼 Thai Fish Cake,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。泰式香料鱼饼，外香里嫩，烤到微焦最好吃。,N,,,,,,,8.00,,,,,N
+bl02,bl02,蔬菜丸子 Mixed Vege Ball,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。混合蔬菜丸，清爽不腻，小孩也爱。,N,,,,,,,8.00,,,,,N
+bl03,bl03,鱼丸 Fish Ball,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。经典鱼丸，弹牙爽口，烤煮皆宜。,N,,,,,,,8.00,,,,,N
+bl04,bl04,香菇丸子 Shiitake Ball,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。加入香菇粒，菇香浓郁，口感扎实。,N,,,,,,,8.00,,,,,N
+bl05,bl05,鱼豆腐 Tofu Fish Cake,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。外层金黄，内里绵滑，烧烤火锅必备。,N,,,,,,,8.00,,,,,N
+bl08,bl08,潮汕牛肉丸子 Beef Ball,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。潮汕手打风味，弹牙有嚼劲。,N,,,,,,,8.00,,,,,N
+bl09,bl09,马来乌达鱼片 Otah Fish Cake,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。本地乌达风味，香辣椰香，烤后更香。,N,,,,,,,8.00,,,,,N
+bl10,bl10,潮州鱼片 Teochew Fish Cake,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。潮州鱼饼切片，鲜甜有弹性。,N,,,,,,,8.00,,,,,N
+bl07,bl07,包心鸡肉丸 Chicken Bao Xin Ball,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。咬开有馅，鸡肉多汁，一口一个。,N,,,,,,,9.00,,,,,N
+bl11,bl11,鸡肉芝士丸子 Chicken Cheese Ball,丸子鱼饼 Balls & Fish Cakes,1 包 · 200g。咬开芝士爆浆，大人小孩都抢着吃。,N,,,,,,,9.00,,,,,N
+mt01,mt01-1,牛肉片 Beef Slices,涮肉片 Sliced Meats,Shabu Shabu 薄切牛肉片，雪花分布均匀，涮 10 秒即熟。,N,规格 Size,1 盒 · 200g,,,,,18.00,,,,,N
+mt01,mt01-b3,牛肉片 Beef Slices,涮肉片 Sliced Meats,,N,规格 Size,3 盒 Bundle,,,,,50.00,,,,,N
+mt03,mt03-1,鸡肉片 Chicken Slices,涮肉片 Sliced Meats,Shabu Shabu 薄切鸡肉片，清爽嫩滑，小孩也爱。,N,规格 Size,1 盒 · 200g,,,,,18.00,,,,,N
+mt03,mt03-b3,鸡肉片 Chicken Slices,涮肉片 Sliced Meats,,N,规格 Size,3 盒 Bundle,,,,,50.00,,,,,N
+mt02,mt02-1,羊肉片 Lamb Slices,涮肉片 Sliced Meats,Shabu Shabu 薄切羊肉片，肥瘦相间，火锅烧烤两相宜。,N,规格 Size,1 盒 · 200g,,,,,25.00,,,,,N
+mt02,mt02-b3,羊肉片 Lamb Slices,涮肉片 Sliced Meats,,N,规格 Size,3 盒 Bundle,,,,,70.00,,,,,N
+sp01,sp01,花胶鸡汤底 Pes Sup Ayam Emas,汤底 Soup Base,1 包 · 200g。鲜香浓郁，胶质满满，滋补养生。加水加鸡肉即成一锅靓汤。,N,,,,,,,12.90,,,,,N
+sp02,sp02,麻辣火锅底料 Pes Sup Sichuan Mala Pedas,汤底 Soup Base,1 包 · 200g。正宗川味，花椒飘香，麻辣鲜香，一料多用。,N,,,,,,,8.90,,,,,N
+gr01,gr01,烧烤架 BBQ Grill Set,烧烤架炉具 Grill & Cooker,1 套 (60 × 22.5 × 32 cm)。折叠炭烤架，抽拉换炭，含烤网、炭网、炭盒。全新干净卫生，不用别人烤过的。,N,,,,,,,48.00,,,,,N
+gr04,gr04,烧烤黑炭 BBQ Charcoal Briquette,烧烤架炉具 Grill & Cooker,1 包 · 1kg。易点燃、火力稳、烟少。,N,,,,,,,8.00,,,,,N
+gr02,gr02-1,便携瓦斯炉套装 Portable Gas Cooker Set,烧烤架炉具 Grill & Cooker,便携卡式炉，颜色 / 品牌随机，图片仅供参考。,N,规格 Size,炉 + 气罐 1 罐,,,,,40.00,,,,,N
+gr02,gr02-2,便携瓦斯炉套装 Portable Gas Cooker Set,烧烤架炉具 Grill & Cooker,,N,规格 Size,炉 + 气罐 4 罐,,,,,50.00,,,,,N
+se01,se01,烧烤调味粉 BBQ Seasoning Powder,调味刷酱 Seasoning & Sauces,1 套 · 原味 ×3 + 香辣 ×3 (共 6 小包 · 2g × 6)。独立小包装，烤到一半撒一撒，香气立刻出来。,N,,,,,,,2.00,,,,,N
+se02,se02-1,海天烧烤刷酱 Haitian BBQ Sauce,调味刷酱 Seasoning & Sauces,边烤边刷，一刷入味。,N,规格 Size,原味,,,,,6.80,,,,,N
+se02,se02-2,海天烧烤刷酱 Haitian BBQ Sauce,调味刷酱 Seasoning & Sauces,,N,规格 Size,香辣,,,,,6.80,,,,,N
+se02,se02-b2,海天烧烤刷酱 Haitian BBQ Sauce,调味刷酱 Seasoning & Sauces,,N,规格 Size,任选 2 包 Bundle,,,,,10.00,,,,,N
+se03,se03-1,蒜蓉酱 Garlic Sauce,调味刷酱 Seasoning & Sauces,烤鱿鱼、烤翅、烤菜都合用。,N,规格 Size,原味,,,,,8.80,,,,,N
+se03,se03-2,蒜蓉酱 Garlic Sauce,调味刷酱 Seasoning & Sauces,,N,规格 Size,香辣,,,,,8.80,,,,,N
+se03,se03-b2,蒜蓉酱 Garlic Sauce,调味刷酱 Seasoning & Sauces,,N,规格 Size,任选 2 包 Bundle,,,,,15.00,,,,,N
+su03,su03,锡纸盒 Foil Tray,烧烤用品 Supplies,2 个 (370 × 270 × 70 mm · 4900ml)。装烤好的串、或垫在架上接油。,N,,,,,,,5.00,,,,,N
+su05,su05,汤勺 + 漏勺 Ladle & Skimmer Set,烧烤用品 Supplies,1 套 · 2 支 (不锈钢)。不锈钢汤勺配漏勺，火锅捞料、舀汤一套搞定。,N,,,,,,,5.00,,,,,N
+su02,su02,一次性餐具 Disposable Tableware Set,烧烤用品 Supplies,1 套 · 10 人用。加厚型碗、碟、筷组合。,N,,,,,,,6.80,,,,,N
+su04,su04,一次性鸳鸯锡纸锅（带盖） Disposable Foil Hotpot,烧烤用品 Supplies,1 个 · 带盖 (2.4L · 336 × 296 mm)。食品级铝箔鸳鸯锅配铝箔盖，卡式炉直接加热，用完即扔免清洗。,N,,,,,,,15.00,,,,,N
+su01,su01,一次性烧烤用品大礼包 BBQ Tools Pack,烧烤用品 Supplies,1 套。一套搞定：烧烤夹 ×1、炭夹 ×1、油刷 ×2、不锈钢铁签 1 扎、竹签 1 包、调味罐 ×2。用完即丢不用洗。,N,,,,,,,30.00,,,,,N
+ex01,ex01-1,香茅驱蚊香薰 Citronella Repellent Candle,其他好物 Extras,植物精油香薰蜡烛，户外烧烤点一罐，香茅味温和驱蚊。,N,规格 Size,1 粒,,,,,4.00,,,,,N
+ex01,ex01-2,香茅驱蚊香薰 Citronella Repellent Candle,其他好物 Extras,,N,规格 Size,5 粒装,,,,,18.00,,,,,N
+pk03,pk03,超值 6–8 人烧烤配套 Value BBQ Set 6–8 pax,超值配套 Value Package,6–8 人份：9 款烤串各 2 包共 340 串、小馒头棉花糖各 2 包、黑炭 2kg、调味粉与蒜蓉酱，再免费送烧烤架 1 套和大礼包 1 套。,N,,,,,,,688.00,,,,,N
+pk02,pk02,超值 6–8 人双拼配套 BBQ + Hotpot Set 6–8 pax,超值配套 Value Package,6–8 人份：170 串烤串、丸子鱼饼、小馒头棉花糖，鸳鸯锅两味汤底加 1.2kg 肉片和 7 款丸子，配烧烤架、黑炭 2kg、卡式炉 + 4 罐气，再免费送 6 样烧烤用品。,N,,,,,,,688.00,,,,,N
+pk01,pk01,超值 10–15 人双拼配套 BBQ + Hotpot Set 10–15 pax,超值配套 Value Package,10–15 人份：360 串烤串、4kg 丸子鱼饼、1.6kg 涮肉片，加 2 个烤架、2 套卡式炉、4kg 黑炭，再免费送 10 样（含两味汤底）。,N,,,,,,,1288.00,,,,,N
